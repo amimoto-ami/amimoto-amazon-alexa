@@ -1,0 +1,10 @@
+---
+machine:
+  python:
+    version: 2.7.10
+dependencies:
+  pre:
+    - pip install lamvery
+test:
+  override:
+    - lamvery build
