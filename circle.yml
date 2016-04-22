@@ -12,7 +12,6 @@ dependencies:
 test:
   override:
     - |
-      source .venv/bin/activate
       flake8 lambda_function.py
       lamvery build
 
