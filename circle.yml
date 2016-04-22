@@ -4,7 +4,15 @@ machine:
     version: 2.7.10
 dependencies:
   pre:
-    - pip install lamvery
+    - |
+      pip install lamvery flake8
+      virtualenv .venv
+      source .venv/bin/activate
+      pip install -r requirements.txt
 test:
   override:
-    - lamvery build
+    - |
+      source .venv/bin/activate
+      flake8 lambda_function.py
+      lamvery build
+
