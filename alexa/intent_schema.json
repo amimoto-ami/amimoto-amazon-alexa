@@ -10,7 +10,19 @@
       ]
     },
     {
+      "intent": "MyNameIsIntent",
+      "slots": [
+        {
+          "name": "VisitorName",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
       "intent": "WhatsMyColorIntent"
+    },
+    {
+      "intent": "DebugIntentName"
     },
     {
       "intent": "AMAZON.HelpIntent"

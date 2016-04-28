@@ -65,18 +65,24 @@ def on_intent(intent_request, session):
     intent = intent_request['intent']
     intent_name = intent_request['intent']['name']
 
+    print(str(intent_name))
+    print(str(session))
+
     # Dispatch to your skill's intent handlers
     if intent_name == "MyColorIsIntent":
         return set_color_in_session(intent, session)
+    elif intent_name == "MyNameIsIntent":
+        return set_visitor_name_from_session(intent, session)
     elif intent_name == "WhatsMyColorIntent":
         return get_color_from_session(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return handle_session_end_request()
+    elif intent_name == "DebugNameIntent":
+        return debug_get_name_response(intent, session)
     else:
         raise ValueError("Invalid intent")
-
 
 def on_session_ended(session_ended_request, session):
     """ Called when the user ends the session.
@@ -86,6 +92,19 @@ def on_session_ended(session_ended_request, session):
     print("on_session_ended requestId=" + session_ended_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # add cleanup logic here
+
+# --------------- Debug for Development ------------------
+def debug_get_name_response(intent, session):
+    """ If we wanted to initialize the session to have some attributes we could
+    add those here
+    """
+
+    card_title = "DebugName"
+    speech_output = str(session)
+    reprompt_text = str(session)
+    should_end_session = False
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
 
 # --------------- Functions that control the skill's behavior ------------------
 
@@ -97,12 +116,12 @@ def get_welcome_response():
 
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Hi, my name is A MI MO TO Ninja." \
-            "Please tell me your favorite color by saying, " \
+    speech_output = "Hi, my name is, A MI MO TO Ninja. " \
+            "Please tell me your name by saying, " \
             "i am John"
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Please tell me your favorite color by saying, " \
+    reprompt_text = "Please tell me your name by saying, " \
             "i am John"
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
@@ -149,6 +168,34 @@ def set_color_in_session(intent, session):
 
 def create_favorite_color_attributes(favorite_color):
     return {"favoriteColor": favorite_color}
+
+
+def set_visitor_name_from_session(intent, session):
+    """ Sets the visitor name in the session and prepares the speech to reply to the
+    user.
+    """
+
+    card_title = intent['name']
+    session_attributes = {}
+    should_end_session = False
+
+    visitor_name = intent['slots']['VisitorName']['value']
+    session_attributes = create_visitor_name_attributes(visitor_name)
+    speech_output = "Hi, " + \
+            visitor_name + ". " \
+            "Where are you from?" \
+            "Please tell me by saying, " \
+            "i'm from Japan"
+    reprompt_text = "I know that, you are " + \
+            visitor_name + ". " \
+            "Where are you from?" \
+            "Please tell me by saying, " \
+            "i'm from Japan"
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+def create_visitor_name_attributes(visitor_name):
+    return {"VisitorName": visitor_name}
 
 
 def get_color_from_session(intent, session):

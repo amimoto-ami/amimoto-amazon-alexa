@@ -15,5 +15,7 @@ WhatsMyColorIntent yup
 WhatsMyColorIntent sure
 WhatsMyColorIntent yes please
 MyColorIsIntent my favorite color is {Color}
-MyNameIsIntent my name is {VisitorName}
-MyNameIsIntent i am {VisitorName}
+MyNameIsIntent my name is {John|VisitorName}
+MyNameIsIntent i am {John|VisitorName}
+MyNameIsIntent i'm {John|VisitorName}
+DebugNameIntent debug name
