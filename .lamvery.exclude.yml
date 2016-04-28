@@ -3,4 +3,5 @@
 - ^\.lamvery\.secret\.yml$
 - ^\.lamvery\.exclude\.yml$
 - ^circle\.yml$
-- ^alexa/
+- ^flake8.*$
+- ^alexa/.*
