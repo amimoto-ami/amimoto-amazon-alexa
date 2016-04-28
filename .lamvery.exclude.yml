@@ -4,4 +4,3 @@
 - ^\.lamvery\.exclude\.yml$
 - ^circle\.yml$
 - ^flake8.*$
-- ^alexa/.*
