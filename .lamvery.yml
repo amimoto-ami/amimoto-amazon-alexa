@@ -1,13 +1,13 @@
 profile: {{ env['AWS_PROFILE'] }}
 region:  {{ env['AWS_REGION'] }}
 versioning: false
-default_alias: null
+default_alias: head
 clean_build: false
 configuration:
-  name: amimoto-amazon-alexa
+  name: amimoto-alexa
   runtime: python2.7
   role: {{ env['AWS_LAMBDA_ROLE'] }}
   handler: lambda_function.lambda_handler
-  description: This is a sample lambda function.
-  timeout: 10
+  description: AMIMOTO Alexa
+  timeout: 20
   memory_size: 128

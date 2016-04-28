@@ -15,4 +15,16 @@ test:
       flake8 lambda_function.py
       source .venv/bin/activate
       lamvery build
-
+deployment:
+  head:
+    branch: master
+    commands:
+      - |
+        source .venv/bin/activate
+        lamvery deploy
+  stable:
+    branch: stable
+    commands:
+      - |
+        source .venv/bin/activate
+        lamvery deploy -a stable -p
