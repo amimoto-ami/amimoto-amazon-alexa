@@ -97,7 +97,7 @@ def get_welcome_response():
 
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Hi, my name is AMIMOTO Ninja." \
+    speech_output = "Hi, my name is A MI MO TO Ninja." \
             "Please tell me your favorite color by saying, " \
             "i am John"
     # If the user either does not reply to the welcome message or says something
