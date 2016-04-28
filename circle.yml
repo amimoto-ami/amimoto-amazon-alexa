@@ -5,16 +5,15 @@ machine:
 dependencies:
   pre:
     - |
-      sudo pip install flake8 --upgrade
       virtualenv .venv
       source .venv/bin/activate
       pip install -r requirements.txt
 test:
   override:
     - |
-      flake8 lambda_function.py
       source .venv/bin/activate
-      lamvery build
+      flake8 lambda_function.py
+      lamvery build ## simple check
 deployment:
   head:
     branch: master

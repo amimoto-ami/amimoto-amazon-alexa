@@ -93,3 +93,6 @@ ENV/
 ## lamvery
 
 *.zip
+/.lamvery.secret.yml
+/.venv/
+
