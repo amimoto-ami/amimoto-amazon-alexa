@@ -18,4 +18,7 @@ MyColorIsIntent my favorite color is {Color}
 MyNameIsIntent my name is {John|VisitorName}
 MyNameIsIntent i am {John|VisitorName}
 MyNameIsIntent i'm {John|VisitorName}
+WhereComeFromIntent i am from {Japan|VisitorCountry}
+WhereComeFromIntent i'm from {Japan|VisitorCountry}
+WhereComeFromIntent from {Japan|VisitorCountry}
 DebugNameIntent debug name

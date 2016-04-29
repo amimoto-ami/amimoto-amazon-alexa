@@ -19,6 +19,15 @@
       ]
     },
     {
+      "intent": "WhereComeFromIntent",
+      "slots": [
+        {
+          "name": "VisitorCountry",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
       "intent": "WhatsMyColorIntent"
     },
     {
