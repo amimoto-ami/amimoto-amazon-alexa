@@ -95,4 +95,4 @@ ENV/
 *.zip
 /.lamvery.secret.yml
 /.venv/
-
+/data/*.json
