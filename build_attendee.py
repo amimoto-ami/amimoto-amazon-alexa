@@ -16,5 +16,5 @@ if __name__ == "__main__":
         if twitter_name != None:
             # have more than 3 characters ?
             if len(twitter_name) > 3:
-                data[full_name] = twitter_name
+                data[full_name.lower()] = twitter_name
     file.write(json.dumps(data, indent=2))
