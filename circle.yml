@@ -13,6 +13,7 @@ test:
     - |
       source .venv/bin/activate
       flake8 lambda_function.py
+      python ./build_attendee.py
       lamvery build ## simple check
 deployment:
   head:
