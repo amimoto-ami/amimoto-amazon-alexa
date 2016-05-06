@@ -21,10 +21,12 @@ deployment:
     commands:
       - |
         source .venv/bin/activate
+        ci/create_secret.sh
         lamvery deploy
   stable:
     branch: stable
     commands:
       - |
         source .venv/bin/activate
+        ci/create_secret.sh
         lamvery deploy -a stable -p
