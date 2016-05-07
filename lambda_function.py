@@ -57,7 +57,7 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
-    return get_welcome_response()
+    return get_welcome_response(intent, session)
 
 
 def on_intent(intent_request, session):
@@ -131,13 +131,18 @@ def debug_logger(*args):
 def load_text_from_yaml(title):
     return yaml.load('data/text/{card}'.format(card=title))
 
-def get_welcome_response():
+def get_welcome_response(intent, session):
     """ If we wanted to initialize the session to have some attributes we could
     add those here
     """
     debug_logger(intent,session)
 
-    session_attributes = {}
+    # initialize session flags
+    if session['new']:
+        session_attributes = {}
+    else:
+        session_attributes = session
+
     card_title = "Welcome"
     text_data = load_text_from_yaml(card_title)
     speech_output = text_data['speech']
