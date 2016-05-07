@@ -145,6 +145,7 @@ def get_welcome_response(intent, session):
 
     card_title = "Welcome"
     text_data = load_text_from_yaml(card_title)
+    print(str(text_data))
     speech_output = text_data['speech']
 
     # If the user either does not reply to the welcome message or says something
