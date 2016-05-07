@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
 This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
 The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well
@@ -8,6 +10,7 @@ http://amzn.to/1LGWsLG
 """
 
 from __future__ import print_function
+from __future__ import unicode_literals
 
 
 def lambda_handler(event, context):
@@ -117,6 +120,8 @@ def debug_get_name_response(intent, session):
 
 # --------------- Functions that control the skill's behavior ------------------
 
+def load_text_from_yaml(title):
+    return yaml.load('data/text/{card}'.format(card=title))
 
 def get_welcome_response():
     """ If we wanted to initialize the session to have some attributes we could
@@ -125,13 +130,12 @@ def get_welcome_response():
 
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Hi, my name is, A MI MO TO Ninja. " \
-            "Please tell me your name by saying, " \
-            "i am John"
+    text_data = load_text_from_yaml(card_title)
+    speech_output = text_data['speech']
+
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Please tell me your name by saying, " \
-            "i am John"
+    reprompt_text = text_data['reprompt']
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))

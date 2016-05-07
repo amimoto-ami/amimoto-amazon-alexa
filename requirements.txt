@@ -1,3 +1,4 @@
 flake8==2.5.4
 lamvery==0.15.1
 pyquery==1.2.13
+PyYAML==3.11
