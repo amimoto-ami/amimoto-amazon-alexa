@@ -23,7 +23,7 @@ def lambda_handler(event, context):
           event['session']['application']['applicationId'])
 
     print(lamvery.secret.get('test'))
-    ""test
+    """
     Uncomment this if statement and populate with your skill's application ID to
     prevent someone else from configuring a skill that sends requests to this
     function.
