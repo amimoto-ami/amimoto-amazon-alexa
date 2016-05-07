@@ -13,6 +13,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 import yaml
 import json
+import lamvery
 
 def lambda_handler(event, context):
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
@@ -21,6 +22,7 @@ def lambda_handler(event, context):
     print("event.session.application.applicationId=" +
           event['session']['application']['applicationId'])
 
+    print(lamvery.secret.get('test'))
     """
     Uncomment this if statement and populate with your skill's application ID to
     prevent someone else from configuring a skill that sends requests to this
