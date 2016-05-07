@@ -23,7 +23,7 @@ def lambda_handler(event, context):
           event['session']['application']['applicationId'])
 
     print(lamvery.secret.get('test'))
-    """
+    ""test
     Uncomment this if statement and populate with your skill's application ID to
     prevent someone else from configuring a skill that sends requests to this
     function.
@@ -131,7 +131,7 @@ def debug_logger(*args):
 # --------------- Functions that control the skill's behavior ------------------
 
 def load_text_from_yaml(title):
-    return yaml.load('data/text/{card}.yml'.format(card=title))
+    return yaml.load(open('data/text/{card}.yml'.format(card=title)).read())
 
 def get_welcome_response(intent, session):
     """ If we wanted to initialize the session to have some attributes we could
