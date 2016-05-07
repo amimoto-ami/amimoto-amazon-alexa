@@ -1,4 +1,9 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+from __future__ import print_function
+from __future__ import unicode_literals
+
 from pyquery import PyQuery as pq
 import json
 
@@ -18,4 +23,9 @@ if __name__ == "__main__":
             if len(twitter_name) > 3:
                 data[full_name.lower()] = twitter_name
     json.dump(data, file, indent=2)
+    file.close()
+    file = open('data/list_of_attendees', "w")
+    for x in data.keys():
+        file.write(x.encode('utf8'))
+        file.write("\n")
     file.close()

@@ -1,15 +1,6 @@
 {
   "intents": [
     {
-      "intent": "MyColorIsIntent",
-      "slots": [
-        {
-          "name": "Color",
-          "type": "LIST_OF_COLORS"
-        }
-      ]
-    },
-    {
       "intent": "MyNameIsIntent",
       "slots": [
         {
@@ -19,22 +10,19 @@
       ]
     },
     {
-      "intent": "WhereComeFromIntent",
-      "slots": [
-        {
-          "name": "VisitorCountry",
-          "type": "AMAZON.LITERAL"
-        }
-      ]
-    },
-    {
-      "intent": "WhatsMyColorIntent"
-    },
-    {
-      "intent": "DebugIntentName"
-    },
-    {
       "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    { 
+      "intent": "AMAZON.YesIntent"
+    },
+    { 
+      "intent": "AMAZON.NoIntent"
     }
   ]
 }
