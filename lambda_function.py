@@ -129,7 +129,7 @@ def debug_logger(*args):
 # --------------- Functions that control the skill's behavior ------------------
 
 def load_text_from_yaml(title):
-    return yaml.load('data/text/{card}'.format(card=title))
+    return yaml.load('data/text/{card}.yml'.format(card=title))
 
 def get_welcome_response(intent, session):
     """ If we wanted to initialize the session to have some attributes we could
