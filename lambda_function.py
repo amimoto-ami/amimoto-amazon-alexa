@@ -84,7 +84,7 @@ def on_intent(intent_request, session):
     elif intent_name == "WhatsMyColorIntent":
         return get_color_from_session(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
-        return get_welcome_response()
+        return get_welcome_response(intent, session)
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return handle_session_end_request()
     else:
@@ -118,6 +118,13 @@ def debug_get_name_response(intent, session):
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
+def debug_logger(*args):
+    """ outputs args to log
+    """
+
+    for x in args:
+        print(repr(x))
+
 # --------------- Functions that control the skill's behavior ------------------
 
 def load_text_from_yaml(title):
@@ -127,6 +134,7 @@ def get_welcome_response():
     """ If we wanted to initialize the session to have some attributes we could
     add those here
     """
+    debug_logger(intent,session)
 
     session_attributes = {}
     card_title = "Welcome"
