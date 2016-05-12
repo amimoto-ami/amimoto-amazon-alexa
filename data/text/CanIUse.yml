@@ -27,3 +27,9 @@ php7: |
 free trial: |
   Yes, free tier is for fourteen days for micro instance.
   when free tier is expired, you simply pay standard, pay-as-you-go service rates.
+  
+cdn: |
+  Yes, we provide an optional CDN service.
+  CDN makes your WordPress deliver fast contents even with the same resources and machine specification.
+  It copies your content and deliver them to end users using global network distributed in locations around the world such as USA (20), South America (1), Asia (10), Australia (1) and Europe (14),
+  and delivers static files like CSS, JavaScript and graphics much faster.
