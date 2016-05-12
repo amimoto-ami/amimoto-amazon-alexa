@@ -13,8 +13,7 @@ test:
     - ruby -r yaml -e 'Dir.glob("data/text/*yml").map {|file| YAML.load_file(file)}'
     - |
       source .venv/bin/activate
-      flake8 lambda_function.py
-      flake8 amimoto_alexa/*.py
+      flake8 lambda_function.py amimoto_alexa/*.py
       python ./build_attendee.py
 deployment:
   head:

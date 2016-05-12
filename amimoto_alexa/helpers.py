@@ -8,6 +8,21 @@ import yaml
 import json
 
 
+def build_session_attributes(session):
+    """ initialize session_attributes when passed None """
+    if 'attributes' in session.keys():
+        if session['attributes']:
+            session_attributes = session['attributes']
+        else:
+            session_attributes = {}
+            session_attributes['state'] = 'started'
+    else:
+        # direct intent ??
+        session_attributes['state'] = 'unknown'
+
+    return session_attributes
+
+
 def gen_twitter_sentence(twitter_id):
     if twitter_id:
         str = 'I found your twitter id, ' + twitter_id + ". "
