@@ -68,8 +68,8 @@ def dispatch_no_intent(intent, session):
 
     if session_attributes['state'] in ['on_question']:
         # WIP ask impression and Tweet
-        speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
-                        "Please tell me your impressions by saying, my impression is, I felt A MI MO TO is marvelous!"
+        speech_output = 'Thank you for trying the, A MI MO TO Ninja. ' \
+                        'Please tell us your thoughts by saying, my impression is, "I love WordPress!"'
         should_end_session = False
     else:
         speech_output = "Thank you for trying the, A MI MO TO Ninja. " \

@@ -82,6 +82,8 @@ def on_intent(intent_request, session):
         return set_visitor_name_from_session(intent, session)
     elif intent_name == "WhatIsIntent" or intent_name == "CanIUseIntent":
         return dispatch_question(intent, session)
+    elif intent_name == "ImpressionIntent":
+        return collect_impression(intent, session)
     elif intent_name == "AMAZON.YesIntent":
         return dispatch_yes_intent(intent, session)
     elif intent_name == "AMAZON.NoIntent":
