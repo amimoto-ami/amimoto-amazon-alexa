@@ -173,7 +173,8 @@ def dispatch_question(intent, session):
     if question in text_data.keys():
         speech_output = text_data[question] + '. Do you have any other questions?'
     else:
-        speech_output = "Pardon?"
+        speech_output = "Pardon?" \
+            'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
 
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
@@ -189,9 +190,10 @@ def dispatch_yes_intent(intent, session):
     debug_logger(session)
 
     if session_attributes['state'] in ['on_question']:
-        speech_output = "Next questions"
+        speech_output = 'OK. Please ask to me by saying, What is WordPress?, or Can I use free trial?'
     else:
-        speech_output = 'Pardon?'
+        speech_output = 'Pardon?' \
+            'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
 
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
