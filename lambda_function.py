@@ -241,6 +241,8 @@ def set_visitor_name_from_session(intent, session):
     attendees = load_attendees()
     if visitor_name in attendees.keys():
         session_attributes['twitter_id'] = attendees[visitor_name]
+    else:
+        session_attributes['twitter_id'] = None
 
     speech_output = "Hi, " + \
             visitor_name + ". " \
