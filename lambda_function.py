@@ -1,12 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
-The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well
-as testing instructions are located at http://amzn.to/1LzFrj6
-
-For additional samples, visit the Alexa Skills Kit Getting Started guide at
-http://amzn.to/1LGWsLG
+AMIMOTO Alexa
 """
 
 from __future__ import print_function
@@ -14,6 +9,9 @@ from __future__ import unicode_literals
 import yaml
 import json
 import lamvery
+
+## amimoto_alexa
+from amimoto_alexa.helpers import *
 
 def lambda_handler(event, context):
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
@@ -254,50 +252,4 @@ def set_visitor_name_from_session(intent, session):
             "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
-
-# --------------- Helpers that build all of the responses ----------------------
-
-def gen_twitter_sentence(twitter_id):
-    if twitter_id:
-        str = 'I found your twitter id, ' + twitter_id + ". "
-    else:
-        str = ""
-
-    return str
-
-
-def build_speechlet_response(title, output, reprompt_text, should_end_session):
-    return {
-        'outputSpeech': {
-            'type': 'PlainText',
-            'text': output
-        },
-        'card': {
-            'type': 'Simple',
-            'title': 'SessionSpeechlet - ' + title,
-            'content': 'SessionSpeechlet - ' + output
-        },
-        'reprompt': {
-            'outputSpeech': {
-                'type': 'PlainText',
-                'text': reprompt_text
-            }
-        },
-        'shouldEndSession': should_end_session
-    }
-
-
-def build_response(session_attributes, speechlet_response):
-    return {
-        'version': '1.0',
-        'sessionAttributes': session_attributes,
-        'response': speechlet_response
-    }
-
-
-def load_text_from_yaml(title):
-    return yaml.load(open('data/text/{card}.yml'.format(card=title)).read())
-
-def load_attendees():
-    return json.load(open('data/attendees.json'))
 
