@@ -91,8 +91,8 @@ def on_intent(intent_request, session):
     # Dispatch to your skill's intent handlers
     if intent_name == "MyNameIsIntent":
         return set_visitor_name_from_session(intent, session)
-    elif intent_name == "WhatIsIntent":
-        return dispatch_whatis_question(intent, session)
+    elif intent_name == "WhatIsIntent" or intent_name == "CanIUseIntent":
+        return dispatch_question(intent, session)
     elif intent_name == "AMAZON.YesIntent":
         return dispatch_yes_intent(intent, session)
     elif intent_name == "AMAZON.NoIntent":
@@ -153,17 +153,23 @@ def handle_session_end_request():
     return build_response({}, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
 
-def dispatch_whatis_question(intent, session):
+def dispatch_question(intent, session):
     """Dispatch questions and return answer.
     """
     session_attributes = build_session_attributes(session)
     if session_attributes['state'] in ['started']:
         session_attributes['state'] = 'on_question'
 
-    card_title = "WhatIs"
+    if session['intent']['name'] == 'WhatIsIntent':
+        card_title = "WhatIs"
+    elif session['intent']['name'] == 'CanIUseIntent':
+        card_title = "CanIUse"
+    else:
+        card_title = "Null"
+
     text_data = load_text_from_yaml(card_title)
     debug_logger(text_data)
-    question = intent['slots']['WhatIsQuestion']['value']
+    question = intent['slots']['AskedQuestion']['value']
     if question in text_data.keys():
         speech_output = text_data[question] + '. Do you have any other questions?'
     else:
