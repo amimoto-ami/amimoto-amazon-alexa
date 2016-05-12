@@ -10,11 +10,12 @@ import yaml
 import json
 import lamvery
 
-## amimoto_alexa
+# amimoto_alexa
 from amimoto_alexa.helpers import *
 from amimoto_alexa.debugger import *
 from amimoto_alexa.dispatchers import *
 from amimoto_alexa.setters import *
+
 
 def lambda_handler(event, context):
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
@@ -92,6 +93,7 @@ def on_intent(intent_request, session):
     else:
         raise ValueError("Invalid intent")
 
+
 def on_session_ended(session_ended_request, session):
     """ Called when the user ends the session.
 
@@ -108,7 +110,7 @@ def get_welcome_response(intent, session):
     """ If we wanted to initialize the session to have some attributes we could
     add those here
     """
-    debug_logger(intent,session)
+    debug_logger(intent, session)
 
     session_attributes = build_session_attributes(session)
 

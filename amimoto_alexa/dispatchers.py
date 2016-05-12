@@ -5,6 +5,9 @@
 """
 
 
+from amimoto_alexa.helpers import *
+
+
 def dispatch_question(intent, session):
     """Dispatch questions and return answer.
     """
@@ -32,6 +35,7 @@ def dispatch_question(intent, session):
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
 
+
 def dispatch_yes_intent(intent, session):
     """Dispatch yes intent and return message
     """
@@ -50,6 +54,7 @@ def dispatch_yes_intent(intent, session):
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
+
 
 def dispatch_no_intent(intent, session):
     """Dispatch no intent and tweet. Then end session.
