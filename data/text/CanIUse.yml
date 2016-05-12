@@ -9,7 +9,7 @@ http2: |
   We created presentation file on Speaker Deck to describe setting up HTTP/2 and Let's Encrypt on AMIMOTO.
   Access to there and search "How to install Let’s Encrypt on AWS (EC2) ?".
 
-Let's Encrypt: |
+let's encrypt: |
   Yes!
   We created presentation file on Speaker Deck to describe setting up HTTP/2 and Let's Encrypt on AMIMOTO.
   Access to there and search "How to install Let’s Encrypt on AWS (EC2) ?".
@@ -24,6 +24,6 @@ php7: |
   We provide AMI for PHP7 on AWS Marketplace.
   You will find it by searching "AMIMOTO (Apache HTTPD PHP7)" on AWS Marketplace.
 
-Free trial: |
+free trial: |
   Yes, free tier is for fourteen days for micro instance.
   when free tier is expired, you simply pay standard, pay-as-you-go service rates.
