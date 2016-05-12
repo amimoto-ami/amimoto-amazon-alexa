@@ -192,7 +192,7 @@ def set_visitor_name_from_session(intent, session):
     user.
     """
 
-    card_title = intent['AskName']
+    card_title = 'MyNameIs'
     session_attributes = session['attributes']
     should_end_session = False
 

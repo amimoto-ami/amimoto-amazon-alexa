@@ -1,8 +1,8 @@
 ---
 speech: |
   Hi, I'm, A MI MO TO Ninja.
-  Please tell me your name of the attendee by saying, i am John Smith
+  Please tell me your name of the attendee by saying, i am John
 reprompt: |
-  Please tell me your name of the attendee by saying, i am John Smith
+  Please tell me your name of the attendee by saying, i am John
 
 
