@@ -26,7 +26,7 @@ def build_session_attributes(session):
 
 def gen_twitter_sentence(twitter_id):
     if twitter_id:
-        str = 'I found your twitter id, ' + twitter_id + ". "
+        str = 'I found your twitter ID, ' + twitter_id + ". "
     else:
         str = ""
 

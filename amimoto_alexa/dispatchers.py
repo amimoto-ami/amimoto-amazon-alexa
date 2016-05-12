@@ -25,7 +25,7 @@ def dispatch_question(intent, session):
 
     text_data = load_text_from_yaml(card_title)
     debug_logger(text_data)
-    question = intent['slots']['AskedQuestion']['value']
+    question = intent['slots']['AskedQuestion']['value'].lower()
     if question in text_data.keys():
         speech_output = text_data[question] + '. Do you have any other questions?'
     else:
