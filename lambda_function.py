@@ -170,7 +170,7 @@ def dispatch_whatis_question(intent, session):
         speech_output = "Pardon?"
 
     should_end_session = False
-    return build_response({}, build_speechlet_response(
+    return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
 
 def dispatch_yes_intent(intent, session):
@@ -188,7 +188,7 @@ def dispatch_yes_intent(intent, session):
         speech_output = 'Pardon?'
 
     should_end_session = False
-    return build_response({}, build_speechlet_response(
+    return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
 
 def set_visitor_name_from_session(intent, session):
