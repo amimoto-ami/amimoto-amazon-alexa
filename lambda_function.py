@@ -198,7 +198,7 @@ def set_visitor_name_from_session(intent, session):
 
     if 'VisitorName' in session_attributes.keys():
       visitor_name = session_attributes['VisitorName']
-    else
+    else:
       visitor_name = intent['slots']['VisitorName']['value'].lower()
       session_attributes['VisitorName'] = visitor_name
 
