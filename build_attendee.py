@@ -20,7 +20,7 @@ if __name__ == "__main__":
         full_name = pq(x).find('div.tix-attendee-name').text()
         if twitter_name != None:
             # have more than 3 characters ?
-            if len(twitter_name) > 3:
+            if len(twitter_name) > 4:
                 data[full_name.lower()] = twitter_name
     json.dump(data, file, indent=2)
     file.close()
