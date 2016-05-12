@@ -10,6 +10,15 @@
       ]
     },
     {
+      "intent": "WhatIsIntent",
+      "slots": [
+        {
+          "name": "WhatIsQuestion",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
