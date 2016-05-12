@@ -19,6 +19,15 @@
       ]
     },
     {
+      "intent": "CanIUseIntent",
+      "slots": [
+        {
+          "name": "CanIQuestion",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
