@@ -180,7 +180,7 @@ def dispatch_yes_intent(intent, session):
     card_title = "Yes"
     session_attributes = build_session_attributes(session)
 #    text_data = load_text_from_yaml(card_title)
-    debug_logger(text_data)
+    debug_logger(session)
 
     if session_attributes['state'] in ['on_question']:
         speech_output = "Next questions"
