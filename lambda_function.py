@@ -160,9 +160,9 @@ def dispatch_question(intent, session):
     if session_attributes['state'] in ['started']:
         session_attributes['state'] = 'on_question'
 
-    if session['intent']['name'] == 'WhatIsIntent':
+    if intent['name'] == 'WhatIsIntent':
         card_title = "WhatIs"
-    elif session['intent']['name'] == 'CanIUseIntent':
+    elif intent['name'] == 'CanIUseIntent':
         card_title = "CanIUse"
     else:
         card_title = "Null"

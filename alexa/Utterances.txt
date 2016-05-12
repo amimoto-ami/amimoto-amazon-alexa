@@ -1,6 +1,6 @@
 MyNameIsIntent my name is {John Smith|VisitorName}
 MyNameIsIntent i am {John Smith|VisitorName}
 MyNameIsIntent i'm {John Smith|VisitorName}
-WhatIsIntent what is {AMIMOTO Ninja|WhatIsQuestion}
-WhatIsIntent what about {AMIMOTO Ninja|WhatIsQuestion}
-CanIUseIntent can i use {Free Trial|CanIQuestion}
+WhatIsIntent what is {AMIMOTO Ninja|AskedQuestion}
+WhatIsIntent what about {AMIMOTO Ninja|AskedQuestion}
+CanIUseIntent can i use {Free Trial|AskedQuestion}

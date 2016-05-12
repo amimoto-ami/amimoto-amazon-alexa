@@ -13,7 +13,7 @@
       "intent": "WhatIsIntent",
       "slots": [
         {
-          "name": "WhatIsQuestion",
+          "name": "AskedQuestion",
           "type": "AMAZON.LITERAL"
         }
       ]
@@ -22,7 +22,7 @@
       "intent": "CanIUseIntent",
       "slots": [
         {
-          "name": "CanIQuestion",
+          "name": "AskedQuestion",
           "type": "AMAZON.LITERAL"
         }
       ]
