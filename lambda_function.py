@@ -12,6 +12,9 @@ import lamvery
 
 ## amimoto_alexa
 from amimoto_alexa.helpers import *
+from amimoto_alexa.debugger import *
+from amimoto_alexa.dispatchers import *
+from amimoto_alexa.setters import *
 
 def lambda_handler(event, context):
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
@@ -47,20 +50,6 @@ def on_session_started(session_started_request, session):
 
     print("on_session_started requestId=" + session_started_request['requestId'] +
           ", sessionId=" + session['sessionId'])
-
-def build_session_attributes(session):
-    """ initialize session_attributes when passed None """
-    if 'attributes' in session.keys():
-        if session['attributes']:
-            session_attributes = session['attributes']
-        else:
-            session_attributes = {}
-            session_attributes['state'] = 'started'
-    else:
-        ## direct intent ??
-        session_attributes['state'] = 'unknown'
-
-    return session_attributes
 
 
 def on_launch(launch_request, session):
@@ -112,13 +101,6 @@ def on_session_ended(session_ended_request, session):
           ", sessionId=" + session['sessionId'])
     # add cleanup logic here
 
-# --------------- Debug for Development ------------------
-def debug_logger(*args):
-    """ outputs args to log
-    """
-
-    for x in args:
-        print(repr(x))
 
 # --------------- Functions that control the skill's behavior ------------------
 
@@ -151,105 +133,3 @@ def handle_session_end_request():
     should_end_session = True
     return build_response({}, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
-
-def dispatch_question(intent, session):
-    """Dispatch questions and return answer.
-    """
-    session_attributes = build_session_attributes(session)
-    if session_attributes['state'] in ['started']:
-        session_attributes['state'] = 'on_question'
-
-    if intent['name'] == 'WhatIsIntent':
-        card_title = "WhatIs"
-    elif intent['name'] == 'CanIUseIntent':
-        card_title = "CanIUse"
-    else:
-        card_title = "Null"
-
-    text_data = load_text_from_yaml(card_title)
-    debug_logger(text_data)
-    question = intent['slots']['AskedQuestion']['value']
-    if question in text_data.keys():
-        speech_output = text_data[question] + '. Do you have any other questions?'
-    else:
-        speech_output = "Pardon?" \
-            'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
-
-    should_end_session = False
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
-
-def dispatch_yes_intent(intent, session):
-    """Dispatch yes intent and return message
-    """
-
-    card_title = "Yes"
-    session_attributes = build_session_attributes(session)
-#    text_data = load_text_from_yaml(card_title)
-    debug_logger(session)
-
-    if session_attributes['state'] in ['on_question']:
-        speech_output = 'OK. Please ask to me by saying, What is WordPress?, or Can I use free trial?'
-    else:
-        speech_output = 'Pardon?' \
-            'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
-
-    should_end_session = False
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
-
-def dispatch_no_intent(intent, session):
-    """Dispatch no intent and tweet. Then end session.
-    """
-
-    card_title = "No"
-    session_attributes = build_session_attributes(session)
-#    text_data = load_text_from_yaml(card_title)
-    debug_logger(session)
-
-    if session_attributes['state'] in ['on_question']:
-        # WIP ask impression and Tweet
-        speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
-                        "Please tell me your impressions by saying, my impression is, I felt A MI MO TO is marvelous!"
-        should_end_session = False
-    else:
-        speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
-                        "Have a nice day! "
-        should_end_session = True
-
-    return build_response({}, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
-
-def set_visitor_name_from_session(intent, session):
-    """ Sets the visitor name in the session and prepares the speech to reply to the
-    user.
-    """
-
-    card_title = 'MyNameIs'
-    session_attributes = build_session_attributes(session)
-    should_end_session = False
-
-    if 'VisitorName' in session_attributes.keys():
-      visitor_name = session_attributes['VisitorName']
-    else:
-      visitor_name = intent['slots']['VisitorName']['value'].lower()
-      session_attributes['VisitorName'] = visitor_name
-
-    debug_logger(session_attributes)
-    attendees = load_attendees()
-    if visitor_name in attendees.keys():
-        session_attributes['twitter_id'] = attendees[visitor_name]
-    else:
-        session_attributes['twitter_id'] = None
-
-    speech_output = "Hi, " + \
-            visitor_name + ". " \
-            + gen_twitter_sentence(session_attributes['twitter_id']) + \
-            "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
-    reprompt_text = "I know that, you are " + \
-            visitor_name + ". " \
-            + gen_twitter_sentence(session_attributes['twitter_id']) + \
-            "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
-
