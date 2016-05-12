@@ -212,7 +212,7 @@ def dispatch_no_intent(intent, session):
     if session_attributes['state'] in ['on_question']:
         # WIP ask impression and Tweet
         speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
-                        "Have a nice day! "
+                        "Please tell me your impressions by saying, my impression is, I felt A MI MO TO is marvelous!"
         should_end_session = False
     else:
         speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
