@@ -3,3 +3,4 @@ MyNameIsIntent i am {John|VisitorName}
 MyNameIsIntent i'm {John|VisitorName}
 WhatIsIntent what is {AMIMOTO|WhatIsQuestion}
 WhatIsIntent what about {AMIMOTO|WhatIsQuestion}
+CanIUseIntent can i use {Free Trial|CanIQuestion}
