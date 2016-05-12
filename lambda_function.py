@@ -50,6 +50,19 @@ def on_session_started(session_started_request, session):
     print("on_session_started requestId=" + session_started_request['requestId'] +
           ", sessionId=" + session['sessionId'])
 
+def build_session_attributes(session):
+    """ initialize session_attributes """
+    if 'attributes' in session.keys():
+        session_attributes = session['attributes']
+    else:
+        session_attributes = {}
+        session_attributes['state'] = 'started'
+        session_attributes['flags'] = {
+                'name' : False,
+                'has_twitter' : False
+                }
+    return session_attributes
+
 
 def on_launch(launch_request, session):
     """ Called when the user launches the skill without specifying what they
@@ -116,16 +129,7 @@ def get_welcome_response(intent, session):
     """
     debug_logger(intent,session)
 
-    # initialize session flags
-    if session['new']:
-        session_attributes = {}
-        session_attributes['state'] = 'started'
-        session_attributes['flags'] = {
-                'name' : False,
-                'has_twitter' : False
-                }
-    else:
-        session_attributes = session['attributes']
+    session_attributes = build_session_attributes(session)
 
     card_title = "Welcome"
     text_data = load_text_from_yaml(card_title)
@@ -142,7 +146,7 @@ def get_welcome_response(intent, session):
 
 def handle_session_end_request():
     card_title = "Session Ended"
-    speech_output = "Thank you for trying the Alexa Skills Kit sample. " \
+    speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
                     "Have a nice day! "
     # Setting this to true ends the session and exits the skill.
     should_end_session = True
@@ -152,7 +156,7 @@ def handle_session_end_request():
 def dispatch_whatis_question(intent, session):
     """Dispatch questions and return answer.
     """
-    session_attributes = session['attributes']
+    session_attributes = build_session_attributes(session)
     if session_attributes['state'] in ['started']:
         session_attributes['state'] = 'on_question'
 
@@ -172,9 +176,9 @@ def dispatch_whatis_question(intent, session):
 def dispatch_yes_intent(intent, session):
     """Dispatch yes intent and return message
     """
-    session_attributes = session['attributes']
 
     card_title = "Yes"
+    session_attributes = build_session_attributes(session)
 #    text_data = load_text_from_yaml(card_title)
     debug_logger(text_data)
 
@@ -193,7 +197,7 @@ def set_visitor_name_from_session(intent, session):
     """
 
     card_title = 'MyNameIs'
-    session_attributes = session['attributes']
+    session_attributes = build_session_attributes(session)
     should_end_session = False
 
     if 'VisitorName' in session_attributes.keys():

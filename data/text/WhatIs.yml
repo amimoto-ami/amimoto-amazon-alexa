@@ -1,8 +1,5 @@
 ---
 amimoto: |
-  Amimoto Stack includes ready-to-run versions of WordPress. 
-  It is completely integrated and configured, so you will be ready to start developing your WordPress as soon as the AMI is launched onto Amazon EC2. 
+  Amimoto Stack includes ready-to-run versions of WordPress.
+  It is completely integrated and configured, so you will be ready to start developing your WordPress as soon as the AMI is launched onto Amazon EC2.
   This is “Amimoto”.
-
-
-  
