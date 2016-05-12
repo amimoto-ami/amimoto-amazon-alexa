@@ -1,5 +1,5 @@
 MyNameIsIntent my name is {John|VisitorName}
 MyNameIsIntent i am {John|VisitorName}
 MyNameIsIntent i'm {John|VisitorName}
-
-
+WhatIsIntent what is {AMIMOTO|WhatIsQuestion}
+WhatIsIntent what about {AMIMOTO|WhatIsQuestion}
