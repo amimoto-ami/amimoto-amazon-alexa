@@ -7,6 +7,7 @@ helpers for amimoto_alexa
 import yaml
 import json
 
+
 def gen_twitter_sentence(twitter_id):
     if twitter_id:
         str = 'I found your twitter id, ' + twitter_id + ". "
@@ -48,6 +49,6 @@ def build_response(session_attributes, speechlet_response):
 def load_text_from_yaml(title):
     return yaml.load(open('data/text/{card}.yml'.format(card=title)).read())
 
+
 def load_attendees():
     return json.load(open('data/attendees.json'))
-
