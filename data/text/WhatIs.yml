@@ -63,7 +63,21 @@ wordpress: |
   The core software is built by hundreds of community volunteers, and when you’re ready for more there are thousands of plugins and themes available to transform your site into almost anything you can imagine.
   Over 60 million people have chosen WordPress to power the place on the web they call “home” — we’d love you to join the family.
   
+wordpress4.5: |
+  Version 4.5 of WordPress, named “Coleman” in honor of jazz saxophonist Coleman Hawkins, is available for download or update in your WordPress dashboard.
+  New features in 4.5 help streamline your workflow, whether you’re writing or building your site.
+
+wordpress4.5 release reader: |
+  Version 4.5 of WordPress release was led by Mike Schroder, backed up by Adam Silverstein as Release Deputy, Mel Choyce as Release Design Lead, and the help of these fine individuals.
+  There are 298 contributors with props in this release.
+
 wordcamp: |
   WordCamps are informal, community-organized events that are put together by WordPress users like you.
   Everyone from casual users to core developers participate, share ideas, and get to know each other.
+
+matt mullenweg: |
+  Matthew Charles "Matt" Mullenweg is an American online social media entrepreneur and web developer living in San Francisco.
+  He is best known for developing the free and open source web software WordPress, now managed by The WordPress Foundation.
+  After dropping out of college and working at CNET Networks from 2004 to 2005, Mullenweg quit that job and founded Automattic, the business behind WordPress.com (which provides free WordPress blogs and other services), Akismet, Gravatar, VaultPress, IntenseDebate, Polldaddy, and more.
+ Since 2005 Mullenweg has been a frequent keynote/speaker at conferences/events, including global WordCamp events, SxSW, Web 2.0 Summit, YCombinator's Startup School, Le Web, Lean Startup Conference, and the International World Wide Web Conference etc.
 
