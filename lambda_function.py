@@ -72,7 +72,7 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
-    return get_welcome_response(intent, session)
+    return get_welcome_response(launch_request, session)
 
 
 def on_intent(intent_request, session):
