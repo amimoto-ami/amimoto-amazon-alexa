@@ -5,7 +5,7 @@
 """
 
 
-from amimoto_alexa.helpers import *
+from helpers import *
 
 
 def set_visitor_name_from_session(intent, session):

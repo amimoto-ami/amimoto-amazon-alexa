@@ -5,7 +5,7 @@
 """
 
 
-from amimoto_alexa.helpers import *
+from helpers import *
 
 
 def dispatch_question(intent, session):
