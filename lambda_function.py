@@ -15,6 +15,7 @@ from amimoto_alexa.helpers import *
 from amimoto_alexa.debugger import *
 from amimoto_alexa.dispatchers import *
 from amimoto_alexa.setters import *
+from amimoto_alexa.collect_message import *
 
 
 def lambda_handler(event, context):
