@@ -301,6 +301,6 @@ def build_response(session_attributes, speechlet_response):
 def load_text_from_yaml(title):
     return yaml.load(open('data/text/{card}.yml'.format(card=title)).read())
 
-def load_attendees:
+def load_attendees():
     return json.load(open('data/attendees.json'))
 
