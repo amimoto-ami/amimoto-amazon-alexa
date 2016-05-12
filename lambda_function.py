@@ -52,7 +52,7 @@ def on_session_started(session_started_request, session):
 
 def build_session_attributes(session):
     """ initialize session_attributes when passed None """
-    if 'attributes' in session.keys:
+    if 'attributes' in session.keys():
         if session['attributes']:
             session_attributes = session['attributes']
         else:
