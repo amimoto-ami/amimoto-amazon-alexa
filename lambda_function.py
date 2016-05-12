@@ -51,8 +51,8 @@ def on_session_started(session_started_request, session):
           ", sessionId=" + session['sessionId'])
 
 def build_session_attributes(session):
-    """ initialize session_attributes """
-    if 'attributes' in session.keys():
+    """ initialize session_attributes when passed None """
+    if session['attributes']:
         session_attributes = session['attributes']
     else:
         session_attributes = {}
