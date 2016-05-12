@@ -161,7 +161,7 @@ def dispatch_whatis_question(intent, session):
     debug_logger(text_data)
     question = intent['slots']['WhatIsQuestion']['value']
     if question in text_data.keys():
-        speech_output = text_data[question]
+        speech_output = text_data[question] + '. Do you have any other questions?'
     else:
         speech_output = "Pardon?"
 
