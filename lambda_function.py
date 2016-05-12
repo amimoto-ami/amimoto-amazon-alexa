@@ -52,15 +52,22 @@ def on_session_started(session_started_request, session):
 
 def build_session_attributes(session):
     """ initialize session_attributes when passed None """
-    if session['attributes']:
-        session_attributes = session['attributes']
+    if 'attributes' in session.keys:
+        if session['attributes']:
+            session_attributes = session['attributes']
+        else:
+            session_attributes = {}
+            session_attributes['state'] = 'started'
+            session_attributes['params'] = {
+                    'twitter_id' : None
+                    }
     else:
-        session_attributes = {}
-        session_attributes['state'] = 'started'
-        session_attributes['flags'] = {
-                'name' : False,
-                'has_twitter' : False
+        ## direct intent ??
+        session_attributes['state'] = 'unknown'
+        session_attributes['params'] = {
+                'twitter_id' : None
                 }
+
     return session_attributes
 
 
@@ -236,36 +243,30 @@ def set_visitor_name_from_session(intent, session):
       visitor_name = intent['slots']['VisitorName']['value'].lower()
       session_attributes['VisitorName'] = visitor_name
 
+    attendees = load_attendees()
+    if visitor_name in attendees.keys():
+        session_attributes['params']['twitter_id'] = attendees[visitor_name]
+
     speech_output = "Hi, " + \
             visitor_name + ". " \
+            + gen_twitter_sentence(session_attributes['params']['twitter_id']) + \
             "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
     reprompt_text = "I know that, you are " + \
             visitor_name + ". " \
+            + gen_twitter_sentence(session_attributes['params']['twitter_id']) + \
             "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
-
-def set_visitor_full_name_from_session(intent, session):
-    """ Sets the visitor name in the session and prepares the speech to reply to the
-    user.
-    """
-
-    card_title = intent['name']
-    session_attributes = session['attributes']
-    should_end_session = False
-
-    visitor_first_name = intent['slots']['VisitorFirstName']['value']
-    visitor_last_name = intent['slots']['VisitorLastName']['value']
-    session_attributes['VisitorName'] = visitor_first_name.lower() + ' ' + visitor_last_name.lower()
-    speech_output = "Hi, " + \
-            visitor_name + ". "
-    reprompt_text = "I know that, you are " + \
-            visitor_name + ". "
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
-
 
 # --------------- Helpers that build all of the responses ----------------------
+
+def gen_twitter_sentence(twitter_id):
+    if twitter_id:
+        str = 'I found your twitter id, ' + twitter_id + ". "
+    else:
+        str = ""
+
+    return str
 
 
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
@@ -299,4 +300,7 @@ def build_response(session_attributes, speechlet_response):
 
 def load_text_from_yaml(title):
     return yaml.load(open('data/text/{card}.yml'.format(card=title)).read())
+
+def load_attendees:
+    return json.load(open('data/attendees.json'))
 
