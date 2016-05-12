@@ -12,7 +12,7 @@ amimoto spec: |
   AMIMOTO Apache HTTPD PHP7 employs PHP7 runtime and Apache web server.
   AMIMOTO_RHEL works on Red Hat Enterprise Linux OS. 
   All our AMI are ready to use WP-CLI, Monit, and Git.
-  
+
 amimoto support: |
   We have some optional support services.
   "WordPress Enterprise Support".
@@ -27,7 +27,7 @@ amimoto cost: |
   You will be charged with AWS infrastructure (AMIMOTO uses AWS services such as EC2 or EBS).
   However, if you have AWS credits, you may use it for EC2 charges.
   If your account is newly created, you are entitled to free EC2 usage of 750 hours.
-  
+
 amimoto name: |
   We named our WordPress hosting provider AMIMOTO because it runs on Amazon Web Services environment, and to launch a virtual server (like AMIMOTO) in the cloud, users need the information provided by Amazon Machine Image (AMI).
 
@@ -36,14 +36,14 @@ hhvm: |
   By using the principle of JIT compilation, executed PHP or Hack code is first transformed into intermediate HipHop bytecode (HHBC), which is then dynamically translated into the x86-64 machine code, optimized, and natively executed.
   This contrasts to the PHP's usual interpreted execution, in which the Zend Engine transforms the PHP source code into opcodes that serve as a form of intermediate code,
   and executes the opcodes directly on the Zend Engine's virtual CPU.HHVM is developed by Facebook, with the project's source code hosted on GitHub and licensed under the terms of PHP License and Zend License.
-  
+
 aws: |
   Amazon Web Services (AWS), is a collection of cloud computing services that make up the on-demand computing platform offered by Amazon.com.
   These services operate from twelve geographical regions across the world.
   The most central and best-known of these services arguably include Amazon Elastic Compute Cloud, also known as "EC2", and Amazon Simple Storage Service, also known as "S3".
   AWS now has more than seventy services that range from compute, storage, networking, database, analytics, application services, deployment, management and mobile.
   Amazon markets AWS as a service to provide large computing capacity quicker and cheaper than a client company building an actual physical server farm.
-  
+
 autoscaling: |
   Auto Scaling helps you maintain application availability and allows you to scale your Amazon EC2 capacity up or down automatically according to conditions you define.
   You can use Auto Scaling to help ensure that you are running your desired number of Amazon EC2 instances.
@@ -52,7 +52,7 @@ autoscaling: |
   Autoscaling automatically increases the number of instances on high demand.
   In this way, the performance of your site is maintained.
   When the traffic gets low, it will automatically decrease to also keep the cost low, making Autoscaling an effective tool for your business as it keeps the performance high, while passing the savings onto you.
-  
+
 aws datacenter: |
   AMIMOTO is available to launch in any data centers.
   In Asia we have Tokyo, Singapore, Sydney and our newest one Korea.
@@ -62,7 +62,7 @@ wordpress: |
   WordPress is web software you can use to create a beautiful website, blog, or app. We like to say that WordPress is both free and priceless at the same time.
   The core software is built by hundreds of community volunteers, and when you’re ready for more there are thousands of plugins and themes available to transform your site into almost anything you can imagine.
   Over 60 million people have chosen WordPress to power the place on the web they call “home” — we’d love you to join the family.
-  
+
 wordpress4.5: |
   Version 4.5 of WordPress, named “Coleman” in honor of jazz saxophonist Coleman Hawkins, is available for download or update in your WordPress dashboard.
   New features in 4.5 help streamline your workflow, whether you’re writing or building your site.
@@ -79,5 +79,5 @@ matt mullenweg: |
   Matthew Charles "Matt" Mullenweg is an American online social media entrepreneur and web developer living in San Francisco.
   He is best known for developing the free and open source web software WordPress, now managed by The WordPress Foundation.
   After dropping out of college and working at CNET Networks from 2004 to 2005, Mullenweg quit that job and founded Automattic, the business behind WordPress.com (which provides free WordPress blogs and other services), Akismet, Gravatar, VaultPress, IntenseDebate, Polldaddy, and more.
- Since 2005 Mullenweg has been a frequent keynote/speaker at conferences/events, including global WordCamp events, SxSW, Web 2.0 Summit, YCombinator's Startup School, Le Web, Lean Startup Conference, and the International World Wide Web Conference etc.
+  Since 2005 Mullenweg has been a frequent keynote/speaker at conferences/events, including global WordCamp events, SxSW, Web 2.0 Summit, YCombinator's Startup School, Le Web, Lean Startup Conference, and the International World Wide Web Conference etc.
 
