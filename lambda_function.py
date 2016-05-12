@@ -196,8 +196,12 @@ def set_visitor_name_from_session(intent, session):
     session_attributes = session['attributes']
     should_end_session = False
 
-    visitor_name = intent['slots']['VisitorName']['value']
-    session_attributes['VisitorName'] = visitor__name.lower()
+    if 'VisitorName' in session_attributes.keys()
+      visitor_name = session_attributes['VisitorName']
+    else
+      visitor_name = intent['slots']['VisitorName']['value'].lower()
+      session_attributes['VisitorName'] = visitor_name
+
     speech_output = "Hi, " + \
             visitor_name + ". " \
             "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
