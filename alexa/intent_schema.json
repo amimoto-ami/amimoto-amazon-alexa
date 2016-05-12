@@ -28,6 +28,15 @@
       ]
     },
     {
+      "intent": "ImpressionIntent",
+      "slots": [
+        {
+          "name": "UserImpression",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {

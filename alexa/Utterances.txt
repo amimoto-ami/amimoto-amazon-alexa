@@ -4,4 +4,4 @@ MyNameIsIntent i'm {John Smith|VisitorName}
 WhatIsIntent what is {AMIMOTO name|AskedQuestion}
 WhatIsIntent what about {AMIMOTO name|AskedQuestion}
 CanIUseIntent can i use {Free Trial|AskedQuestion}
-ImpressionIntent my impression is {your impressions|Impressions}
+ImpressionIntent my impression is {your impressions|UserImpression}
