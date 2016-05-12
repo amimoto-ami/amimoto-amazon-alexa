@@ -149,7 +149,7 @@ def dispatch_whatis_question(intent, session):
     """
     card_title = "WhatIs"
     text_data = load_text_from_yaml(card_title)
-    question = intent['slots']['WhatIsQuestion']['value']
+    question = intent['slots']['WhatIsQuestion']['value'].lower()
     if question in text_data.keys:
         speech_output = text_data[question]
     else:
