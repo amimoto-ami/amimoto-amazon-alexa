@@ -81,3 +81,43 @@ matt mullenweg: |
   After dropping out of college and working at CNET Networks from 2004 to 2005, Mullenweg quit that job and founded Automattic, the business behind WordPress.com (which provides free WordPress blogs and other services), Akismet, Gravatar, VaultPress, IntenseDebate, Polldaddy, and more.
   Since 2005 Mullenweg has been a frequent keynote/speaker at conferences/events, including global WordCamp events, SxSW, Web 2.0 Summit, YCombinator's Startup School, Le Web, Lean Startup Conference, and the International World Wide Web Conference etc.
 
+wordpress.org: |
+  On this site you can download and install a software script called WordPress.
+  To do this you need a web host who meets the minimum requirements and a little time. 
+  WordPress is completely customizable and can be used for almost anything. 
+  There is also a service called WordPress.com which lets you get started with a new and free WordPress-based blog in seconds, but varies in several ways and is less flexible than the WordPress you download and install yourself.
+
+wordpress use for: |
+  WordPress started as just a blogging system, but has evolved to be used as full content management system and so much more through the thousands of plugins and widgets and themes, WordPress is limited only by your imagination. (And tech chops.)
+
+wordpress community: |
+  In addition to online resources like the forums and mailing lists a great way to get involved with WordPress is to attend or volunteer at a WordCamp,
+  which are free or low-cost events that happen all around the world to gather and educate WordPress users, organized by WordPress users.
+  Check out the website, there might be a WordCamp near you.
+
+wordpress history: |
+  WordPress was born out of a desire for an elegant, well-architectured personal publishing system built on PHP and MySQL and licensed under the GPLv2 (or later).
+  It is the official successor of b2/cafelog.
+  WordPress is fresh software, but its roots and development go back to 2001.
+  It is a mature and stable product.
+  We hope by focusing on user experience and web standards we can create a tool different from anything else out there.
+  For a bit more about WordPress' history check out the WordPress Wikipedia page or this page on our own Codex.
+  
+wordpress features: |
+  WordPress powers more than 24% of the web — a figure that rises every day.
+  Everything from simple websites, to blogs, to complex portals and enterprise websites, and even applications, are built with WordPress.
+  WordPress combines simplicity for users and publishers with under-the-hood complexity for developers.
+  This makes it flexible while still being easy-to-use.
+  The following is a list of some of the features that come as standard with WordPress; however, there are literally thousands of plugins that extend what WordPress does, so the actual functionality is nearly limitless.
+  You are also free to do whatever you like with the WordPress code, extend it or modify in any way or use it for commercial projects without any licensing fees.
+  That is the beauty of free software, free refers not only to price but also the freedom to have complete control over it.
+
+wordpress license: |
+  WordPress is licensed under the General Public License (GPLv2 or later) which provides four core freedoms, consider this as the WordPress "bill of rights":
+  The freedom to run the program, for any purpose.
+  The freedom to study how the program works, and change it to make it do what you wish.
+  The freedom to redistribute.
+  The freedom to distribute copies of your modified versions to others.
+  Part of those licensing requirements include licensing derivative works or things that link core WordPress functions (like themes, plugins, etc.) under the GPL as well, thereby passing on the freedom of use for these works as well.
+  Obviously there are those who will try to get around these ideals and restrict the freedom of their users by trying to find loopholes or somehow circumvent the intention of the WordPress licensing, which is to ensure freedom of use. We believe that the community as a whole will reward those who focus on supporting these licensing freedoms instead of trying to avoid them.
+  The most responsible use of WordPress community resources would therefore be put to best use by emphasizing high quality contributions that embrace the freedoms provided by the GPL
