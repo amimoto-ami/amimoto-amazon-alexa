@@ -19,7 +19,8 @@ def build_session_attributes(session):
             session_attributes['state'] = 'started'
     else:
         # direct intent ??
-        session_attributes['state'] = 'unknown'
+        session_attributes = {}
+        session_attributes['state'] = 'started'
 
     return session_attributes
 
