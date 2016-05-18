@@ -7,6 +7,7 @@
 
 import lamvery
 import twitter
+import re
 from helpers import *
 from wpapi import *
 from debugger import *
@@ -34,14 +35,16 @@ def collect_impression(intent, session):
     debug_logger(session['user']['userId'])
 
     # check right user?
-    # if lamvery.secret.get('dc_id') == session['user']['userId']:
-    comment_to_wordpress(session_attributes['VisitorName'], impression)
-    if session_attributes['twitter_id']:
-        tw_post = impression + " by " + session_attributes['twitter_id']
-    else:
-        tw_post = impression
+    amimoto_user = re.compile(lamvery.secret.get('dc_id'))
+    if amimoto_user.match(session['user']['userId']):
+        # post actions
+        comment_to_wordpress(session_attributes['VisitorName'], impression)
+        if session_attributes['twitter_id']:
+            tw_post = impression + " by " + session_attributes['twitter_id']
+        else:
+            tw_post = impression
 
-    tw_api.PostUpdate(tw_post)
+        tw_api.PostUpdate(tw_post)
 
 
 
