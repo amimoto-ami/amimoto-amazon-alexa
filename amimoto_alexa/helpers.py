@@ -77,5 +77,5 @@ def put_event_to_firehorse(intent_request, session):
     client = boto3.client('firehose',region_name='us-east-1')
     data['request'] = intent_request
     data['session'] = session
-    client.put_record(DeliveryStreamName=lamvery.secret.get('fh_stream'), Record={'Data' : str(data) + "\n"})
+    client.put_record(DeliveryStreamName=lamvery.secret.get('fh_stream'), Record={'Data' : json.dumps(data) + "\n"})
     return True
