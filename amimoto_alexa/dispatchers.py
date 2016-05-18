@@ -28,8 +28,10 @@ def dispatch_question(intent, session):
     question = intent['slots']['AskedQuestion']['value'].lower()
     # todo: stock question to session_attributes
     if question in text_data.keys():
+        session_attributes['accepted_questions'].append(question)
         speech_output = text_data[question] + '. Do you have any other questions?'
     else:
+        session_attributes['rejected_questions'].append(question)
         speech_output = "Pardon?" \
             'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
 

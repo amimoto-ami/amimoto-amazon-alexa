@@ -17,12 +17,17 @@ def build_session_attributes(session):
         if session['attributes']:
             session_attributes = session['attributes']
         else:
+            # called from test
             session_attributes = {}
             session_attributes['state'] = 'started'
+            session_attributes['accepted_questions'] = []
+            session_attributes['rejected_questions'] = []
     else:
-        # direct intent ??
+        # called from tap
         session_attributes = {}
         session_attributes['state'] = 'started'
+        session_attributes['accepted_questions'] = []
+        session_attributes['rejected_questions'] = []
 
     return session_attributes
 
