@@ -24,7 +24,7 @@ def collect_impression(intent, session):
 
     impression = intent['slots']['UserImpression']['value']
 
-    debug_logger(lamvery.secret.get('tw_keys'))
+    tw_ck, tw_cs, tw_ak, tw_as = lamvery.secret.get('tw_keys').split(',')
     tw_api = twitter.Api(consumer_key=tw_ck,
                          consumer_secret=tw_cs,
                          access_token_key=tw_ak,
