@@ -6,6 +6,7 @@
 
 
 import lamvery
+import twitter
 from helpers import *
 from wpapi import *
 from debugger import *
@@ -23,13 +24,26 @@ def collect_impression(intent, session):
 
     impression = intent['slots']['UserImpression']['value']
 
-# todo: tweet if exist id.
+    tw_ck, tw_cs, tw_ak, tw_as = lamvery.secret.get('TW_KEYS').split(',')
+    tw_api = twitter.Api(consumer_key=tw_ck,
+                         consumer_secret=tw_cs,
+                         access_token_key=tw_ak,
+                         access_token_secret=tw_as)
+
 # todo: store session summary to firehose
     debug_logger(session['user']['userId'])
 
     # check right user?
-    if lamvery.secret.get('DC_ID') == session['user']['userId']:
-        comment_to_wordpress(session_attributes['VisitorName'], impression)
+    # if lamvery.secret.get('DC_ID') == session['user']['userId']:
+    comment_to_wordpress(session_attributes['VisitorName'], impression)
+    if session_attributes['twitter_id']:
+        tw_post = impression + " by " + session_attributes['twitter_id']
+    else:
+        tw_post = impression
+
+    tw_api.PostUpdate(tw_post)
+
+
 
     should_end_session = True
     return build_response(session_attributes, build_speechlet_response(
