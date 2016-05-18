@@ -78,4 +78,4 @@ def put_event_to_firehorse(intent_request, session):
     data['request'] = intent_request
     data['session'] = session
     client.put_record(DeliveryStreamName=lamvery.secret.get('fh_stream'), Record={'Data' : str(data) + "\n"})
-    return true
+    return True
