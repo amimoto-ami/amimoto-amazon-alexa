@@ -91,7 +91,7 @@ def on_intent(intent_request, session):
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response(intent, session)
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
-        return handle_session_end_request()
+        return handle_session_end_request(intent, session)
     else:
         raise ValueError("Invalid intent")
 
@@ -131,11 +131,12 @@ def get_welcome_response(intent, session):
         card_title, speech_output, reprompt_text, should_end_session))
 
 
-def handle_session_end_request():
+def handle_session_end_request(intent, session):
     card_title = "Session Ended"
     speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
                     "Have a nice day! "
     # Setting this to true ends the session and exits the skill.
+    put_event_to_firehorse(intent, session)
     should_end_session = True
     return build_response({}, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
