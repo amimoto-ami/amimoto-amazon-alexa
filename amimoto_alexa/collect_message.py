@@ -32,10 +32,8 @@ def collect_impression(intent, session):
                          access_token_key=tw_ak,
                          access_token_secret=tw_as)
 
-# todo: store session summary to firehose
-    debug_logger(session['user']['userId'])
-
     # check right user?
+    debug_logger(session['user']['userId'])
     amimoto_user = re.compile(lamvery.secret.get('dc_id'))
     if amimoto_user.match(session['user']['userId']):
         # post actions
@@ -47,8 +45,7 @@ def collect_impression(intent, session):
 
         tw_api.PostUpdate(tw_post)
 
-
-
+    session['attributes']['UserImpression'] = impression
     put_event_to_firehorse(intent, session)
     should_end_session = True
     return build_response(session_attributes, build_speechlet_response(
