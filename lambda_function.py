@@ -25,7 +25,6 @@ def lambda_handler(event, context):
     print("event.session.application.applicationId=" +
           event['session']['application']['applicationId'])
 
-    print(lamvery.secret.get('test'))
     """
     Uncomment this if statement and populate with your skill's application ID to
     prevent someone else from configuring a skill that sends requests to this
@@ -116,6 +115,8 @@ def get_welcome_response(intent, session):
     debug_logger(intent, session)
 
     session_attributes = build_session_attributes(session)
+    if session['new']:
+        put_event_to_firehorse(intent, session)
 
     card_title = "Welcome"
     text_data = load_text_from_yaml(card_title)

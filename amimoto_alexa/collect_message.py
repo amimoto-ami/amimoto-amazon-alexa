@@ -7,6 +7,7 @@
 
 import lamvery
 import twitter
+import boto3
 import re
 from helpers import *
 from wpapi import *

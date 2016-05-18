@@ -6,6 +6,8 @@ helpers for amimoto_alexa
 
 import yaml
 import json
+import boto3, datetime, time
+import lamvery
 from debugger import *
 
 
@@ -69,3 +71,11 @@ def load_text_from_yaml(title):
 
 def load_attendees():
     return json.load(open('data/attendees.json'))
+
+def put_event_to_firehorse(intent_request, session):
+    data = {}
+    client = boto3.client('firehose',region_name='us-east-1')
+    data['request'] = intent_request
+    data['session'] = session
+    client.put_record(DeliveryStreamName=lamvery.secret.get('fh_stream'), Record={'Data' : str(data) + "\n"})
+    return true
