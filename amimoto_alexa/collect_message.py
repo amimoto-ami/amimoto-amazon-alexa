@@ -28,7 +28,7 @@ def collect_impression(intent, session):
     debug_logger(session['user']['userId'])
 
     # check right user?
-    if lamvery.secret.get('DC_ID') == session['user']['userId']
+    if lamvery.secret.get('DC_ID') == session['user']['userId']:
         comment_to_wordpress(session_attributes['VisitorName'], impression)
 
     should_end_session = True
