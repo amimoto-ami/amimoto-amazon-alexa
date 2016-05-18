@@ -24,8 +24,7 @@ def collect_impression(intent, session):
 
     impression = intent['slots']['UserImpression']['value']
 
-    tw_ck, tw_cs, tw_ak, tw_as = lamvery.secret.get('TW_KEYS').split(',')
-    debug_logger(lamvery.secret.get('TW_KEYS'))
+    debug_logger(lamvery.secret.get('tw_keys'))
     tw_api = twitter.Api(consumer_key=tw_ck,
                          consumer_secret=tw_cs,
                          access_token_key=tw_ak,
@@ -35,7 +34,7 @@ def collect_impression(intent, session):
     debug_logger(session['user']['userId'])
 
     # check right user?
-    # if lamvery.secret.get('DC_ID') == session['user']['userId']:
+    # if lamvery.secret.get('dc_id') == session['user']['userId']:
     comment_to_wordpress(session_attributes['VisitorName'], impression)
     if session_attributes['twitter_id']:
         tw_post = impression + " by " + session_attributes['twitter_id']
