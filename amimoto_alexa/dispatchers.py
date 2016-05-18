@@ -70,7 +70,7 @@ def dispatch_no_intent(intent, session):
     debug_logger(session)
 
     if session_attributes['state'] in ['on_question']:
-        # WIP ask impression and Tweet
+        session_attributes['state'] = 'finalizing'
         speech_output = 'Thank you for trying the, A MI MO TO Ninja. ' \
                         'Please tell us your thoughts by saying, my impression is, "I love WordPress!"'
         should_end_session = False
