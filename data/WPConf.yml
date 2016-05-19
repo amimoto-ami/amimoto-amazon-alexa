@@ -1,4 +1,5 @@
 ---
 wordpress:
   post: 4856
+  #post: 5686 #For WordCamp
   url: 'https://amimoto-ami.com'
