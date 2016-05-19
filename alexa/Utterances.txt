@@ -5,3 +5,8 @@ WhatIsIntent what is {AMIMOTO name|AskedQuestion}
 WhatIsIntent what about {AMIMOTO name|AskedQuestion}
 CanIUseIntent can i use {Free Trial|AskedQuestion}
 ImpressionIntent my impression is {your impressions|UserImpression}
+ImpressionIntent I feel {your impressions|UserImpression}
+ImpressionIntent I feel that {your impressions|UserImpression}
+ImpressionIntent I felt {your impressions|UserImpression}
+ImpressionIntent I felt that {your impressions|UserImpression}
+ImpressionIntent my comment is {your impressions|UserImpression}
