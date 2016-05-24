@@ -13,7 +13,7 @@ def dispatch_question(intent, session):
     """Dispatch questions and return answer.
     """
     session_attributes = build_session_attributes(session)
-    if session_attributes['state'] in ['started']:
+    if session_attributes['state'] in ['started', 'got_name']:
         session_attributes['state'] = 'on_question'
 
     if intent['name'] == 'WhatIsIntent':
@@ -28,10 +28,10 @@ def dispatch_question(intent, session):
     question = intent['slots']['AskedQuestion']['value'].lower()
     # todo: stock question to session_attributes
     if question in text_data.keys():
-        session_attributes['accepted_questions'].append(':'.join(intent['name'], question))
+        session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
         speech_output = text_data[question] + '. Do you have any other questions?'
     else:
-        session_attributes['rejected_questions'].append(':'.join(intent['name'], question))
+        session_attributes['rejected_questions'].append(':'.join([intent['name'], question]))
         speech_output = "Pardon? please check list of questions." \
             'So, please ask to me by saying, What is WordPress?, or Can I use free trial?'
 
