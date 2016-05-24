@@ -37,8 +37,10 @@ def dispatch_question(intent, session):
     aliases = yaml.load(open('data/aliases.yml').read())
     rev_aliases = {}
     for x in aliases.items():
-        for y in x[1]:
-            rev_aliases[y] = x[0]
+        if x[1]:
+            for y in x[1]:
+                rev_aliases[y] = x[0]
+
     # debug_logger(text_data)
     question = intent['slots']['AskedQuestion']['value'].lower()
     # todo: stock question to session_attributes
