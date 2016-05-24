@@ -22,6 +22,14 @@ def collect_impression(intent, session):
     card_title = "Impression"
 
     debug_logger(session)
+
+    if session_attributes['state'] in ['started']:
+        speech_output = 'Please tell me your name first, by saying, i am John Smith'
+        card_title = "Null"
+        should_end_session = False
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, speech_output, should_end_session))
+
     speech_output = "Thank you {0}! You can see impressions on twitter and ,A MI MO TO Blog.".format(session_attributes['VisitorName']) \
                     + "Have a nice day! "
 
