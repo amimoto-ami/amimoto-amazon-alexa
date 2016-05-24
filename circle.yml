@@ -11,6 +11,7 @@ dependencies:
 test:
   override:
     - ruby -r yaml -e 'Dir.glob("data/text/*yml").map {|file| YAML.load_file(file)}'
+    - test/check_dup_alias.py
     - |
       source .venv/bin/activate
       flake8 lambda_function.py amimoto_alexa/*.py

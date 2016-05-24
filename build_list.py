@@ -19,3 +19,4 @@ with open('data/text/CanIUse.yml') as f:
     caniuse = yaml.load(f.read())
     for word in caniuse.keys():
         print("  - " + word)
+
