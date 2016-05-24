@@ -22,8 +22,8 @@ def collect_impression(intent, session):
     card_title = "Impression"
 
     debug_logger(session)
-    speech_output = "Thank you! You can see impressions on twitter and ,A MI MO TO Blog." \
-                    "Have a nice day! "
+    speech_output = "Thank you {0}! You can see impressions on twitter and ,A MI MO TO Blog.".format(session_attributes['VisitorName']) \
+                    + "Have a nice day! "
 
     impression = intent['slots']['UserImpression']['value']
 
