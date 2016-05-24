@@ -33,7 +33,10 @@ def collect_impression(intent, session):
     speech_output = "Thank you {0}! You can see impressions on twitter and ,A MI MO TO Blog.".format(session_attributes['VisitorName']) \
                     + "Have a nice day! "
 
-    impression = intent['slots']['UserImpression']['value']
+    try:
+        impression = intent['slots']['UserImpression']['value']
+    except KeyError:
+        impression = "missing_impression"
 
     tw_ck, tw_cs, tw_ak, tw_as = lamvery.secret.get('tw_keys').split(',')
     tw_api = twitter.Api(consumer_key=tw_ck,
