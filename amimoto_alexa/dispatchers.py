@@ -72,17 +72,21 @@ def dispatch_yes_intent(intent, session):
 
     card_title = "Yes"
     session_attributes = build_session_attributes(session)
+    should_end_session = False
 #    text_data = load_text_from_yaml(card_title)
     debug_logger(session)
 
     if session_attributes['state'] in ['on_question', 'got_name']:
         speech_output = 'OK. Please ask to me by saying, What is WordPress?, or Can I use free trial?'
         reprompt_text = 'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
+    elif session_attributes['state'] in ['finalizing']:
+        speech_output = 'One more time please. Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, speech_output, should_end_session))
     else:
         speech_output = 'Pardon?'
         reprompt_text = None
 
-    should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
@@ -106,6 +110,11 @@ def dispatch_no_intent(intent, session):
         speech_output = 'Thank you {0} for trying the, A MI MO TO Ninja.'.format(session_attributes['VisitorName']) \
                         + "Have a nice day! "
         should_end_session = True
+    elif session_attributes['state'] in ['finalizing']:
+        should_end_session = False
+        speech_output = 'One more time please. Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, speech_output, should_end_session))
     else:
         session_attributes['state'] = 'finalizing'
         speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
