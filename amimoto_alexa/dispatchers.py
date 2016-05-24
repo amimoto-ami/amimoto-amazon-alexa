@@ -50,15 +50,16 @@ def dispatch_yes_intent(intent, session):
 #    text_data = load_text_from_yaml(card_title)
     debug_logger(session)
 
-    if session_attributes['state'] in ['on_question']:
+    if session_attributes['state'] in ['on_question', 'got_name']:
         speech_output = 'OK. Please ask to me by saying, What is WordPress?, or Can I use free trial?'
+        reprompt_text = 'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
     else:
-        speech_output = 'Pardon?' \
-            'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
+        speech_output = 'Pardon?'
+        reprompt_text = None
 
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
+        card_title, speech_output, reprompt_text, should_end_session))
 
 
 def dispatch_no_intent(intent, session):
@@ -72,10 +73,16 @@ def dispatch_no_intent(intent, session):
 
     if session_attributes['state'] in ['on_question']:
         session_attributes['state'] = 'finalizing'
-        speech_output = 'Thank you for trying the, A MI MO TO Ninja. ' \
-                        'Please tell us your thoughts by saying, my impression is, "I love WordPress!"'
+        speech_output = 'Thank you {0} for trying the, A MI MO TO Ninja. '.format(session_attributes['VisitorName']) \
+                        + 'Please tell us your thoughts by saying, I feel that "I love WordPress!"'
         should_end_session = False
+    elif session_attributes['state'] in ['got_name']:
+        session_attributes['state'] = 'finalizing'
+        speech_output = 'Thank you {0} for trying the, A MI MO TO Ninja.'.format(session_attributes['VisitorName']) \
+                        + "Have a nice day! "
+        should_end_session = True
     else:
+        session_attributes['state'] = 'finalizing'
         speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
                         "Have a nice day! "
         should_end_session = True
