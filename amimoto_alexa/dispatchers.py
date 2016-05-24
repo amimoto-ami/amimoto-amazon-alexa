@@ -19,6 +19,7 @@ def dispatch_question(intent, session):
 
     if session_attributes['state'] in ['started']:
         speech_output = 'Please tell me your name first, by saying, i am John Smith'
+        card_title = "Null"
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
 
