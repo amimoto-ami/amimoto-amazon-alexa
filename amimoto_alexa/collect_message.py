@@ -51,9 +51,9 @@ def collect_impression(intent, session):
         # post actions
         comment_to_wordpress(session_attributes['VisitorName'], impression)
         if session_attributes['twitter_id']:
-            tw_post = session_attributes['VisitorName'] + " says. [" impression + "] " + session_attributes['twitter_id']
+            tw_post = session_attributes['VisitorName'] + " says. [" + impression + "] " + session_attributes['twitter_id']
         else:
-            tw_post = session_attributes['VisitorName'] + " says. [" impression + "]"
+            tw_post = session_attributes['VisitorName'] + " says. [" + impression + "]"
 
         tw_api.PostUpdate(tw_post)
 
