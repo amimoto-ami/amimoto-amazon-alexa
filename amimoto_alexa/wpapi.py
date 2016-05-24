@@ -12,6 +12,8 @@
 import urllib
 import urllib2
 import yaml
+import sys
+
 yaml_path = 'data/WPConf.yml'
 
 
