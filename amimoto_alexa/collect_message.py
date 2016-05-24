@@ -29,6 +29,12 @@ def collect_impression(intent, session):
         should_end_session = False
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
+    elif session_attributes['state'] in ['on_question', 'got_name']:
+        speech_output = 'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
+        card_title = "Null"
+        should_end_session = False
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, speech_output, should_end_session))
 
     speech_output = "Thank you {0}! You can see impressions on twitter and ,A MI MO TO Blog.".format(session_attributes['VisitorName']) \
                     + "Have a nice day! "
