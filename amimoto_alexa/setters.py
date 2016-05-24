@@ -19,7 +19,11 @@ def set_visitor_name_from_session(intent, session):
     should_end_session = False
 
     if 'VisitorName' in session_attributes.keys():
-        visitor_name = session_attributes['VisitorName']
+        if session_attributes['VisitorName']:
+            visitor_name = session_attributes['VisitorName']
+        else:
+            visitor_name = ""
+
     else:
         visitor_name = intent['slots']['VisitorName']['value'].lower()
         session_attributes['VisitorName'] = visitor_name
