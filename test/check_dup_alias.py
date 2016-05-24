@@ -12,9 +12,10 @@ flatten=lambda i:[a for b in i for a in(flatten(b)if hasattr(b,'__iter__')else(b
 
 with open('data/aliases.yml') as f:
     aliases = yaml.load(f.read())
-    words = flatten(aliases.values())
+    words = filter(None, flatten(aliases.values()))
 
 if len(words) == len(set(words)):
     print("No dup aliases")
 else:
+    print(words)
     raise StandardError, "found dup aliases!!"
