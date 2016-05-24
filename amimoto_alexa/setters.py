@@ -18,6 +18,12 @@ def set_visitor_name_from_session(intent, session):
     session_attributes = build_session_attributes(session)
     should_end_session = False
 
+    if session_attributes['state'] in ['finalizing']:
+        speech_output = 'One more time please. Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        card_title = "Null"
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, speech_output, should_end_session))
+
     if 'VisitorName' in session_attributes.keys():
         if session_attributes['VisitorName']:
             visitor_name = session_attributes['VisitorName']
