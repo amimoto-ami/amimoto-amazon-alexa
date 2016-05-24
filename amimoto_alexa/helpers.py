@@ -82,6 +82,11 @@ def put_event_to_firehorse(intent_request, session):
     client = boto3.client('firehose',region_name='us-east-1')
     data['request'] = intent_request
     data['session'] = session
+
+    try:
     for stream in lamvery.secret.get('fh_stream').split(','):
-      client.put_record(DeliveryStreamName=stream, Record={'Data' : json.dumps(data) + "\n"})
+        client.put_record(DeliveryStreamName=stream, Record={'Data' : json.dumps(data) + "\n"})
+        print "Stored to firehose({0}): ".format(stream), json.dumps(data)
+    except:
+        print "Unexpected error: ", sys.exc_info()
     return True
