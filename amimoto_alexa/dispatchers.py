@@ -13,6 +13,7 @@ def dispatch_question(intent, session):
     """Dispatch questions and return answer.
     """
     session_attributes = build_session_attributes(session)
+    debug_logger(session_attributes)
     if session_attributes['state'] in ['started', 'got_name']:
         session_attributes['state'] = 'on_question'
 
