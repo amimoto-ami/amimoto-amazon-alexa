@@ -7,6 +7,7 @@
 
 from helpers import *
 from debugger import *
+import yaml
 
 
 def dispatch_question(intent, session):
@@ -33,10 +34,19 @@ def dispatch_question(intent, session):
         card_title = "Null"
 
     text_data = load_text_from_yaml(card_title)
+    aliases = yaml.load(open('data/aliases.yml').read())
+    rev_aliases = {}
+    for x in aliases.items():
+        for y in x[1]:
+            rev_aliases[y] = x[0]
     debug_logger(text_data)
     question = intent['slots']['AskedQuestion']['value'].lower()
     # todo: stock question to session_attributes
     if question in text_data.keys():
+        session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
+        speech_output = text_data[question] + '. Do you have any other questions?'
+    elif question in rev_aliases.keys():
+        question = rev_aliases[question]
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
         speech_output = text_data[question] + '. Do you have any other questions?'
     else:
