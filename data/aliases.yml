@@ -43,7 +43,8 @@ phpmyadmin:
   - php a mean
   - phpadmin
   
-#let's encrypt:
+let's encrypt:
+  - let's anklet
   
 http2:
   - http two
@@ -71,6 +72,10 @@ autoscaling:
  - old scary
  - both the scary
  - scary
+ - old scaring
+ - at the skating
+ - old carrying
+ - all scary
   
 wordpress license:
   - barbra streisand's
@@ -103,6 +108,7 @@ wordpress use for:
 
 wordpress features:
   - what is futures
+  - why the best hue charts
 
 wordpress history:
   - a lot place history
