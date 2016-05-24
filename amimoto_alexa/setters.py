@@ -35,9 +35,6 @@ def set_visitor_name_from_session(intent, session):
         + visitor_name + ". " \
         + gen_twitter_sentence(session_attributes['twitter_id']) \
         + "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
-    reprompt_text = "I know that, you are " \
-        + visitor_name + ". " \
-        + gen_twitter_sentence(session_attributes['twitter_id']) \
-        + "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
+    reprompt_text = "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
