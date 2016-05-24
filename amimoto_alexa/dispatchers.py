@@ -23,6 +23,11 @@ def dispatch_question(intent, session):
         card_title = "Null"
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
+    elif: session_attributes['state'] in ['finalizing']:
+        speech_output = 'One more time please. Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        card_title = "Null"
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, speech_output, should_end_session))
 
     session_attributes['state'] = 'on_question'
 
@@ -53,7 +58,7 @@ def dispatch_question(intent, session):
         speech_output = text_data[question] + '. Do you have any other questions?'
     else:
         session_attributes['rejected_questions'].append(':'.join([intent['name'], question]))
-        speech_output = "Pardon? please check list of questions." \
+        speech_output = "Pardon? You asked about {0}, please check list of questions.".format(question) \
             'So, please ask to me by saying, What is WordPress?, or Can I use free trial?'
 
     reprompt_text = 'Do you have any other questions?'
