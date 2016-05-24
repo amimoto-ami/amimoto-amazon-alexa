@@ -36,7 +36,7 @@ def collect_impression(intent, session):
     try:
         impression = intent['slots']['UserImpression']['value']
     except KeyError:
-        impression = "missing_impression"
+        impression = "impression_missing"
 
     tw_ck, tw_cs, tw_ak, tw_as = lamvery.secret.get('tw_keys').split(',')
     tw_api = twitter.Api(consumer_key=tw_ck,
@@ -51,9 +51,9 @@ def collect_impression(intent, session):
         # post actions
         comment_to_wordpress(session_attributes['VisitorName'], impression)
         if session_attributes['twitter_id']:
-            tw_post = session_attributes['VisitorName'] + " says. [" + impression + "] " + session_attributes['twitter_id']
+            tw_post = session_attributes['VisitorName'] + " says. [ " + impression + " ] " + session_attributes['twitter_id']
         else:
-            tw_post = session_attributes['VisitorName'] + " says. [" + impression + "]"
+            tw_post = session_attributes['VisitorName'] + " says. [ " + impression + " ]"
 
         tw_api.PostUpdate(tw_post)
 
