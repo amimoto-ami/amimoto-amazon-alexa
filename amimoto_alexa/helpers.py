@@ -88,7 +88,7 @@ def put_event_to_firehorse(intent_request, session):
 
     try:
         for stream in lamvery.secret.get('fh_stream').split(','):
-            client.put_record(DeliveryStreamName=stream, Record={'Data': json.dumps(data) + "\n"})
+            client.put_record(DeliveryStreamName=stream, Record={'Data': json.dumps(data)})
             print "Stored to firehose({0}): ".format(stream), json.dumps(data)
 
     except:
