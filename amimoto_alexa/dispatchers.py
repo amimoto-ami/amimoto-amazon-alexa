@@ -39,7 +39,7 @@ def dispatch_question(intent, session):
     for x in aliases.items():
         for y in x[1]:
             rev_aliases[y] = x[0]
-    debug_logger(text_data)
+    # debug_logger(text_data)
     question = intent['slots']['AskedQuestion']['value'].lower()
     # todo: stock question to session_attributes
     if question in text_data.keys():
@@ -92,7 +92,7 @@ def dispatch_no_intent(intent, session):
     if session_attributes['state'] in ['on_question']:
         session_attributes['state'] = 'finalizing'
         speech_output = 'Thank you {0} for trying the, A MI MO TO Ninja. '.format(session_attributes['VisitorName']) \
-                        + 'Please tell us your thoughts by saying, I feel that "I love WordPress!"'
+                        + 'Please tell us your thoughts by saying, I feel "I love WordPress!"'
         should_end_session = False
     elif session_attributes['state'] in ['got_name']:
         session_attributes['state'] = 'finalizing'
