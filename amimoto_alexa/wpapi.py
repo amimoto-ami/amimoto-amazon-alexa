@@ -34,4 +34,8 @@ def comment_to_wordpress(author_name, comment):
     query = create_query(author_name, comment)
     query['post'] = conf['wordpress']['post']
     url = conf['wordpress']['url']
-    post_comment(url, query)
+    try:
+        post_comment(url, query)
+    except:
+        print "Unexpected error: ", sys.exc_info()
+    return True
