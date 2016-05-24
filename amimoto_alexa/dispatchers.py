@@ -13,9 +13,16 @@ def dispatch_question(intent, session):
     """Dispatch questions and return answer.
     """
     session_attributes = build_session_attributes(session)
+    should_end_session = False
+
     debug_logger(session_attributes)
-    if session_attributes['state'] in ['started', 'got_name']:
-        session_attributes['state'] = 'on_question'
+
+    if session_attributes['state'] in ['started']:
+        speech_output = 'Please tell me your name first, by saying, i am John Smith'
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, speech_output, should_end_session))
+
+    session_attributes['state'] = 'on_question'
 
     if intent['name'] == 'WhatIsIntent':
         card_title = "WhatIs"
@@ -37,7 +44,6 @@ def dispatch_question(intent, session):
             'So, please ask to me by saying, What is WordPress?, or Can I use free trial?'
 
     reprompt_text = 'Do you have any other questions?'
-    should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
