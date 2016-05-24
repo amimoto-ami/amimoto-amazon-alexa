@@ -42,7 +42,7 @@ def dispatch_question(intent, session):
                 rev_aliases[y] = x[0]
 
     # debug_logger(text_data)
-    question = intent['slots']['AskedQuestion']['value'].lower()
+    question = str(intent['slots']['AskedQuestion']['value']).lower()
     # todo: stock question to session_attributes
     if question in text_data.keys():
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
