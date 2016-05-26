@@ -45,7 +45,7 @@ def gen_twitter_sentence(twitter_id):
 
 def ssmlnize_sentence(text):
     output = ""
-    lines = text.split()
+    lines = text.split("\n")
     for line in lines:
         output = output + "<p>" + line + "</p>"
     return output
