@@ -19,7 +19,7 @@ def set_visitor_name_from_session(intent, session):
     should_end_session = False
 
     if session_attributes['state'] in ['finalizing']:
-        speech_output = 'One more time please. Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        speech_output = '<p>One more time please.</p><p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
         card_title = "Null"
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
@@ -41,11 +41,11 @@ def set_visitor_name_from_session(intent, session):
     else:
         session_attributes['twitter_id'] = None
 
-    speech_output = "Hi, " \
-        + visitor_name + ". " \
+    speech_output = "<p>Hi, " \
+        + visitor_name + ".</p>" \
         + gen_twitter_sentence(session_attributes['twitter_id']) \
-        + "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
-    reprompt_text = "Please ask to me by saying, What is WordPress?, or Can I use free trial?"
+        + "<p>Please ask to me by saying, <break time="0.2s"/> What is WordPress?, or Can I use free trial?</p>"
+    reprompt_text = "<p>Please ask to me by saying, <break time="0.2s"/> What is WordPress?, or Can I use free trial?</p>"
     session_attributes['state'] = ['got_name']
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))

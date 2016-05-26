@@ -66,15 +66,15 @@ def dispatch_question(intent, session):
         if len(session_attributes['rejected_questions']) % 2 == 0:
             question = random.choice(text_data.keys())
             speech_output = speech_output \
-                + 'I might as well introduce, {0} {1}?.' \
-                + '<break time="2s"/>' \
+                + 'I might as well introduce, {0} {1}?.'.format(pre_text, question) \
+                + '<break time="1s"/>' \
                 + text_data[question] \
                 + '. <break time="2s"/> Do you have any other questions?'
         else:
             speech_output = speech_output \
-                + 'So, please ask to me by saying, What is WordPress?, or Can I use free trial?'
+                + '<p>So, please ask to me by saying, <break time="0.2s"/> What is WordPress?, or Can I use free trial?</p>'
 
-    reprompt_text = 'Do you have any other questions?'
+    reprompt_text = '<p>Do you have any other questions?</p>'
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
@@ -90,14 +90,14 @@ def dispatch_yes_intent(intent, session):
     debug_logger(session)
 
     if session_attributes['state'] in ['on_question', 'got_name']:
-        speech_output = 'OK. Please ask to me by saying, What is WordPress?, or Can I use free trial?'
-        reprompt_text = 'Please ask to me by saying, What is WordPress?, or Can I use free trial?'
+        speech_output = '<p>OK. Please ask to me by saying, <break time="0.2s"/> What is WordPress?, or Can I use free trial?</p>'
+        reprompt_text = '<p>Please ask to me by saying, <break time="0.2s"/> What is WordPress?, or Can I use free trial?</p>'
     elif session_attributes['state'] in ['finalizing']:
-        speech_output = 'One more time please. Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        speech_output = '<p>One more time please.</p> <p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
     else:
-        speech_output = 'Sorry, what did you say?'
+        speech_output = '<p>Sorry, what did you say?</p>'
         reprompt_text = None
 
     return build_response(session_attributes, build_speechlet_response(
@@ -115,22 +115,22 @@ def dispatch_no_intent(intent, session):
 
     if session_attributes['state'] in ['on_question']:
         session_attributes['state'] = 'finalizing'
-        speech_output = 'Thank you {0} for trying the, A MI MO TO Ninja. '.format(session_attributes['VisitorName']) \
-                        + 'Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        speech_output = '<p>Thank you {0} for trying the, A MI MO TO Ninja.</p> '.format(session_attributes['VisitorName']) \
+                        + '<p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
         should_end_session = False
     elif session_attributes['state'] in ['got_name']:
         session_attributes['state'] = 'finalizing'
-        speech_output = 'Thank you {0} for trying the, A MI MO TO Ninja.'.format(session_attributes['VisitorName']) \
+        speech_output = '<p>Thank you {0} for trying the, A MI MO TO Ninja.</p>'.format(session_attributes['VisitorName']) \
                         + "Have a nice day! "
         should_end_session = True
     elif session_attributes['state'] in ['finalizing']:
         should_end_session = False
-        speech_output = 'One more time please. Please tell us your thoughts by saying, I feel "I love WordPress!"'
+        speech_output = '<p>One more time please.</p> <p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
     else:
         session_attributes['state'] = 'finalizing'
-        speech_output = "Thank you for trying the, A MI MO TO Ninja. " \
+        speech_output = "<p>Thank you for trying the, A MI MO TO Ninja.</p>" \
                         "Have a nice day! "
         should_end_session = True
 
