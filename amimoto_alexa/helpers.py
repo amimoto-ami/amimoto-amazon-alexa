@@ -43,7 +43,9 @@ def gen_twitter_sentence(twitter_id):
     return str
 
 
-def build_speechlet_response(title, output, reprompt_text="", should_end_session):
+def build_speechlet_response(title, output, reprompt_text, should_end_session):
+    if not reprompt_text:
+        reprompt_text = ""
     return {
         'outputSpeech': {
             'type': 'SSML',
