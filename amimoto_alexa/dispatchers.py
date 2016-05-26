@@ -54,22 +54,22 @@ def dispatch_question(intent, session):
     # todo: stock question to session_attributes
     if question in text_data.keys():
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = text_data[question] + '. <break time="2s"/> Do you have any other questions?'
+        speech_output = '<break time="0.5s"/>' + text_data[question] + '. <break time="2s"/> Do you have any other questions?'
     elif question in rev_aliases.keys():
         question = rev_aliases[question]
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = text_data[question] + '. <break time="2s"/> Do you have any other questions?'
+        speech_output = '<break time="0.5s"/>' + text_data[question] + '. <break time="2s"/> Do you have any other questions?'
     else:
         session_attributes['rejected_questions'].append(':'.join([intent['name'], question]))
-        speech_output = "Hmm... I couldn't recognize, you said '{0}'.".format(question)
+        speech_output = "<p>Hmm... I couldn't recognize, you said '{0}'.</p>".format(question)
 
         if len(session_attributes['rejected_questions']) % 2 == 0:
             question = random.choice(text_data.keys())
             speech_output = speech_output \
-                + 'I might as well introduce, {0} {1}?.'.format(pre_text, question) \
-                + '<break time="1s"/>' \
+                + '<p><break time="0.5s"/>I might as well introduce, {0} {1}?.</p>'.format(pre_text, question) \
+                + '<break time="0.5s"/>' \
                 + text_data[question] \
-                + '. <break time="2s"/> Do you have any other questions?'
+                + '. <break time="2s"/><p>Do you have any other questions?</p>'
         else:
             speech_output = speech_output \
                 + '<p>So, please ask to me by saying, <break time="0.2s"/> What is WordPress?, or Can I use free trial?</p>'
@@ -115,12 +115,12 @@ def dispatch_no_intent(intent, session):
 
     if session_attributes['state'] in ['on_question']:
         session_attributes['state'] = 'finalizing'
-        speech_output = '<p>Thank you {0} for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p> '.format(session_attributes['VisitorName']) \
+        speech_output = '<p>Thank you {0} for trying <phoneme alphabet="ipa" ph="amimoʊtoʊ">amimoto</phoneme> Ninja.</p> '.format(session_attributes['VisitorName']) \
                         + '<p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
         should_end_session = False
     elif session_attributes['state'] in ['got_name']:
         session_attributes['state'] = 'finalizing'
-        speech_output = '<p>Thank you {0} for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p>'.format(session_attributes['VisitorName']) \
+        speech_output = '<p>Thank you {0} for trying <phoneme alphabet="ipa" ph="amimoʊtoʊ">amimoto</phoneme> Ninja.</p>'.format(session_attributes['VisitorName']) \
                         + "Have a nice day! "
         should_end_session = True
     elif session_attributes['state'] in ['finalizing']:
@@ -130,7 +130,7 @@ def dispatch_no_intent(intent, session):
             card_title, speech_output, speech_output, should_end_session))
     else:
         session_attributes['state'] = 'finalizing'
-        speech_output = '<p>Thank you for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p>' \
+        speech_output = '<p>Thank you for trying <phoneme alphabet="ipa" ph="amimoʊtoʊ">amimoto</phoneme> Ninja.</p>' \
                         "Have a nice day! "
         should_end_session = True
 
