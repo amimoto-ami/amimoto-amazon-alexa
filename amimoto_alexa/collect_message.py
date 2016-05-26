@@ -6,7 +6,6 @@
 
 
 import lamvery
-import twitter
 import boto3
 import re
 from helpers import *
@@ -46,12 +45,6 @@ def collect_impression(intent, session):
     except KeyError:
         impression = "impression_missing"
 
-    tw_ck, tw_cs, tw_ak, tw_as = lamvery.secret.get('tw_keys').split(',')
-    tw_api = twitter.Api(consumer_key=tw_ck,
-                         consumer_secret=tw_cs,
-                         access_token_key=tw_ak,
-                         access_token_secret=tw_as)
-
     # check right user?
     debug_logger(session['user']['userId'])
     amimoto_user = re.compile(lamvery.secret.get('dc_id'))
@@ -63,7 +56,7 @@ def collect_impression(intent, session):
         else:
             tw_post = session_attributes['VisitorName'] + " says. [ " + impression + " ]"
 
-        tw_api.PostUpdate(tw_post)
+        post_to_twitter(tw_post)
 
     session['attributes']['UserImpression'] = impression
     put_event_to_firehorse(intent, session)
