@@ -3,6 +3,9 @@ machine:
   python:
     version: 2.7.10
 dependencies:
+  cache_directories:
+    - ~/.cache/pip
+    - ~/virtualenvs/venv-2.7.10/lib/python2.7/site-packages
   pre:
     - |
       virtualenv .venv
