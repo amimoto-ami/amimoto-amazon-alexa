@@ -8,6 +8,7 @@
 from helpers import *
 from debugger import *
 import yaml
+import random
 
 
 def dispatch_question(intent, session):
@@ -33,8 +34,10 @@ def dispatch_question(intent, session):
 
     if intent['name'] == 'WhatIsIntent':
         card_title = "WhatIs"
+        pre_text  =  "What is "
     elif intent['name'] == 'CanIUseIntent':
         card_title = "CanIUse"
+        pre_text  =  "Can I use "
     else:
         card_title = "Null"
 
@@ -51,17 +54,22 @@ def dispatch_question(intent, session):
     # todo: stock question to session_attributes
     if question in text_data.keys():
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = text_data[question] + '. <break time="3s"/> Do you have any other questions?'
+        speech_output = text_data[question] + '. <break time="2s"/> Do you have any other questions?'
     elif question in rev_aliases.keys():
         question = rev_aliases[question]
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = text_data[question] + '. <break time="3s"/> Do you have any other questions?'
+        speech_output = text_data[question] + '. <break time="2s"/> Do you have any other questions?'
     else:
         session_attributes['rejected_questions'].append(':'.join([intent['name'], question]))
         speech_output = "Hmm... I couldn't recognize, you said '{0}'.".format(question)
 
         if len(session_attributes['rejected_questions']) % 2 == 0:
-            pass
+            question = random.choice(text_data.keys())
+            speech_output = speech_output \
+                + 'I might as well introduce, {0} {1}?.' \
+                + '<break time="2s"/>' \
+                + text_data[question] \
+                + '. <break time="2s"/> Do you have any other questions?'
         else:
             speech_output = speech_output \
                 + 'So, please ask to me by saying, What is WordPress?, or Can I use free trial?'
