@@ -66,7 +66,7 @@ def dispatch_question(intent, session):
         if len(session_attributes['rejected_questions']) % 2 == 0:
             question = random.choice(text_data.keys())
             speech_output = speech_output \
-                + '<p><break time="0.5s"/>I might as well introduce, {0} {1}?.</p>'.format(pre_text, question) \
+                + '<p><break time="0.5s"/>I might as well introduce, {0}{1}?.</p>'.format(pre_text, question) \
                 + '<break time="0.5s"/>' \
                 + text_data[question] \
                 + '. <break time="2s"/><p>Do you have any other questions?</p>'

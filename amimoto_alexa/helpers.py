@@ -36,14 +36,14 @@ def build_session_attributes(session):
 
 def gen_twitter_sentence(twitter_id):
     if twitter_id:
-        str = 'I found your twitter ID, ' + twitter_id + ". "
+        str = '<p>I found your twitter ID, ' + twitter_id + ".</p>"
     else:
         str = ""
 
     return str
 
 
-def build_speechlet_response(title, output, reprompt_text, should_end_session):
+def build_speechlet_response(title, output, reprompt_text="", should_end_session):
     return {
         'outputSpeech': {
             'type': 'SSML',
