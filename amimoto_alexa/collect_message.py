@@ -38,7 +38,7 @@ def collect_impression(intent, session):
 
     speech_output = '<p>Thank you {0}!'.format(session_attributes['VisitorName']) \
                     + '<p>You can see impressions on twitter and ' \
-                    + '<phoneme alphabet="ipa" ph="amimoʊtoʊ">amimoto</phoneme> Ninja.</p> Blog.</p>'.format(session_attributes['VisitorName']) \
+                    + '<phoneme alphabet="ipa" ph="amimoʊtoʊ">amimoto</phoneme></p> Blog.</p>'.format(session_attributes['VisitorName']) \
                     + "Have a nice day! "
 
     try:
