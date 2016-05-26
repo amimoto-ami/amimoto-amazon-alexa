@@ -54,11 +54,11 @@ def dispatch_question(intent, session):
     # todo: stock question to session_attributes
     if question in text_data.keys():
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = '<break time="0.5s"/>' + text_data[question] + '. <break time="2s"/> Do you have any other questions?'
+        speech_output = '<break time="0.5s"/>' + ssmlnize_sentence(text_data[question]) + '. <break time="2s"/> Do you have any other questions?'
     elif question in rev_aliases.keys():
         question = rev_aliases[question]
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = '<break time="0.5s"/>' + text_data[question] + '. <break time="2s"/> Do you have any other questions?'
+        speech_output = '<break time="0.5s"/>' + ssmlnize_sentence(text_data[question]) + '. <break time="2s"/> Do you have any other questions?'
     else:
         session_attributes['rejected_questions'].append(':'.join([intent['name'], question]))
         speech_output = "<p>Hmm... I couldn't recognize, you said '{0}'.</p>".format(question)
@@ -68,7 +68,7 @@ def dispatch_question(intent, session):
             speech_output = speech_output \
                 + '<p><break time="0.5s"/>I might as well introduce, {0}{1}?.</p>'.format(pre_text, question) \
                 + '<break time="0.5s"/>' \
-                + text_data[question] \
+                + ssmlnize_sentence(text_data[question]) \
                 + '. <break time="2s"/><p>Do you have any other questions?</p>'
         else:
             speech_output = speech_output \

@@ -43,6 +43,14 @@ def gen_twitter_sentence(twitter_id):
     return str
 
 
+def ssmlnize_sentence(text):
+    output = ""
+    lines = text.split()
+    for line in lines:
+        output = output + "<p>" + line + "</p>"
+    return output
+
+
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
     if not reprompt_text:
         reprompt_text = ""
