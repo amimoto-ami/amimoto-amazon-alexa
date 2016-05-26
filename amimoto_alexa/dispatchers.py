@@ -34,10 +34,10 @@ def dispatch_question(intent, session):
 
     if intent['name'] == 'WhatIsIntent':
         card_title = "WhatIs"
-        pre_text  =  "What is "
+        pre_text = "What is "
     elif intent['name'] == 'CanIUseIntent':
         card_title = "CanIUse"
-        pre_text  =  "Can I use "
+        pre_text = "Can I use "
     else:
         card_title = "Null"
 
@@ -130,7 +130,7 @@ def dispatch_no_intent(intent, session):
             card_title, speech_output, speech_output, should_end_session))
     else:
         session_attributes['state'] = 'finalizing'
-        speech_output = "<p>Thank you for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p>" \
+        speech_output = '<p>Thank you for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p>' \
                         "Have a nice day! "
         should_end_session = True
 
