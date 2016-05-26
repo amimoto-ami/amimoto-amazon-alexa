@@ -15,6 +15,8 @@ test:
     - |
       source .venv/bin/activate
       flake8 lambda_function.py amimoto_alexa/*.py
+    - |
+      source .venv/bin/activate
       python ./build_attendee.py
 deployment:
   head:
