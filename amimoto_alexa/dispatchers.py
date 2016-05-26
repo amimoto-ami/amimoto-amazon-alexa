@@ -51,15 +51,20 @@ def dispatch_question(intent, session):
     # todo: stock question to session_attributes
     if question in text_data.keys():
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = text_data[question] + '. Do you have any other questions?'
+        speech_output = text_data[question] + '. <break time="3s"/> Do you have any other questions?'
     elif question in rev_aliases.keys():
         question = rev_aliases[question]
         session_attributes['accepted_questions'].append(':'.join([intent['name'], question]))
-        speech_output = text_data[question] + '. Do you have any other questions?'
+        speech_output = text_data[question] + '. <break time="3s"/> Do you have any other questions?'
     else:
         session_attributes['rejected_questions'].append(':'.join([intent['name'], question]))
-        speech_output = "Pardon? You asked about {0}, please check list of questions.".format(question) \
-            + 'So, please ask to me by saying, What is WordPress?, or Can I use free trial?'
+        speech_output = "Hmm... I couldn't recognize, you said '{0}'.".format(question)
+
+        if len(session_attributes['rejected_questions']) % 2 == 0:
+            pass
+        else:
+            speech_output = speech_output \
+                + 'So, please ask to me by saying, What is WordPress?, or Can I use free trial?'
 
     reprompt_text = 'Do you have any other questions?'
     return build_response(session_attributes, build_speechlet_response(
@@ -84,7 +89,7 @@ def dispatch_yes_intent(intent, session):
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
     else:
-        speech_output = 'Pardon?'
+        speech_output = 'Sorry, what did you say?'
         reprompt_text = None
 
     return build_response(session_attributes, build_speechlet_response(

@@ -46,8 +46,8 @@ def gen_twitter_sentence(twitter_id):
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
     return {
         'outputSpeech': {
-            'type': 'PlainText',
-            'text': output
+            'type': 'SSML',
+            'ssml': "<speak>" + output + "</speak>"
         },
         'card': {
             'type': 'Simple',
@@ -56,8 +56,8 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         },
         'reprompt': {
             'outputSpeech': {
-                'type': 'PlainText',
-                'text': reprompt_text
+                'type': 'SSML',
+                'ssml': "<speak>>" + reprompt_text + "</speak>"
             }
         },
         'shouldEndSession': should_end_session
