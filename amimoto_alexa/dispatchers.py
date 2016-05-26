@@ -115,12 +115,12 @@ def dispatch_no_intent(intent, session):
 
     if session_attributes['state'] in ['on_question']:
         session_attributes['state'] = 'finalizing'
-        speech_output = '<p>Thank you {0} for trying the, A MI MO TO Ninja.</p> '.format(session_attributes['VisitorName']) \
+        speech_output = '<p>Thank you {0} for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p> '.format(session_attributes['VisitorName']) \
                         + '<p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
         should_end_session = False
     elif session_attributes['state'] in ['got_name']:
         session_attributes['state'] = 'finalizing'
-        speech_output = '<p>Thank you {0} for trying the, A MI MO TO Ninja.</p>'.format(session_attributes['VisitorName']) \
+        speech_output = '<p>Thank you {0} for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p>'.format(session_attributes['VisitorName']) \
                         + "Have a nice day! "
         should_end_session = True
     elif session_attributes['state'] in ['finalizing']:
@@ -130,7 +130,7 @@ def dispatch_no_intent(intent, session):
             card_title, speech_output, speech_output, should_end_session))
     else:
         session_attributes['state'] = 'finalizing'
-        speech_output = "<p>Thank you for trying the, A MI MO TO Ninja.</p>" \
+        speech_output = "<p>Thank you for trying <phoneme alphabet="ipa" ph="amimoto">amimoto</phoneme> Ninja.</p>" \
                         "Have a nice day! "
         should_end_session = True
 

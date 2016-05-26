@@ -1,6 +1,6 @@
 ---
 speech: |
-  <p>Hi, I'm, A MI MO TO Ninja.</p>
+  <p>Hi, I'm  <phoneme alphabet="ipa" ph="amimoto">AMIMOTO</phoneme> Ninja.</p>
   <p>Please tell me your name of the attendee by saying, <break time="0.2s"/> i am John Smith</p>
 reprompt: |
   <p>Please tell me your name of the attendee by saying, <break time="0.2s"/> i am John Smith</p>
