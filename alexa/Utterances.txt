@@ -1,9 +1,9 @@
-MyNameIsIntent my name is {John Smith|VisitorName}
-MyNameIsIntent i am {John Smith|VisitorName}
-MyNameIsIntent i'm {John Smith|VisitorName}
-WhatIsIntent what is {AMIMOTO name|AskedQuestion}
-WhatIsIntent what about {AMIMOTO name|AskedQuestion}
-CanIUseIntent can i use {Free Trial|AskedQuestion}
+MyNameIsIntent my name is {john smith|VisitorName}
+MyNameIsIntent i am {john smith|VisitorName}
+MyNameIsIntent i'm {john smith|VisitorName}
+WhatIsIntent what is {amimoto name|AskedQuestion}
+WhatIsIntent what about {amimoto name|AskedQuestion}
+CanIUseIntent can i use {free trial|AskedQuestion}
 ImpressionIntent my impression is {your impressions|UserImpression}
 ImpressionIntent i feel {your impressions|UserImpression}
 ImpressionIntent i feel that {your impressions|UserImpression}
