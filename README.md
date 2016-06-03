@@ -12,3 +12,35 @@ In this page by using the Alexa Skill Kit and the AWS Lambda and WP REST API, it
 In this page, by using the Alexa Skill Kit and the AWS Lambda and WP REST API, you have to display the impression at the time of talking to Alexa in the event booth of AMIMOTO.
 
 Participate in AMIMOTO's booth and experience the world of AMIMOTO beyond the WordPress.
+
+# You can ask to ...
+## Whatis 〜 Questions.
+  - wordpress history
+  - wordpress four point five release reader
+  - wordcamp
+  - autoscaling
+  - aws
+  - wordpress license
+  - wordpress use for
+  - matt mullenweg
+  - amimoto support
+  - wordpress four point five
+  - amimoto
+  - amimoto cost
+  - amimoto name
+  - aws datacenter
+  - wordpress community
+  - amimoto spec
+  - wordpress.org
+  - wordpress
+  - hhvm
+  - wordpress features
+
+## Can I use 〜 Questions.
+  - free trial
+  - phpmyadmin
+  - let's encrypt
+  - hhvm
+  - http2
+  - cdn
+  - php7
