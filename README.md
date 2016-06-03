@@ -63,3 +63,8 @@ No -> go next, alexa hear you your impressions.
 
 ## "I feel that ~."
 
+Thanks!
+Alexa Tweet this URL:https://twitter.com/dev_amimoto_ami
+
+
+
