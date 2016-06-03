@@ -13,8 +13,20 @@ In this page, by using the Alexa Skill Kit and the AWS Lambda and WP REST API, y
 
 Participate in AMIMOTO's booth and experience the world of AMIMOTO beyond the WordPress.
 
-# You can ask to ...
-## Whatis 〜 Questions.
+# Getting Start
+## "ask AMIMOTO Ninja"
+wake up AMIMOTO Ninja Skill.
+alexa ask you your name.
+
+## "I am YOUR_NAME."
+alexa return your name.
+and start ask questions.
+
+## "What is WordPress?"
+alexa talk about WordPress.
+
+### You can ask to ...
+#### What is 〜
   - wordpress history
   - wordpress four point five release reader
   - wordcamp
@@ -36,7 +48,7 @@ Participate in AMIMOTO's booth and experience the world of AMIMOTO beyond the Wo
   - hhvm
   - wordpress features
 
-## Can I use 〜 Questions.
+#### Can I use 〜
   - free trial
   - phpmyadmin
   - let's encrypt
@@ -44,3 +56,10 @@ Participate in AMIMOTO's booth and experience the world of AMIMOTO beyond the Wo
   - http2
   - cdn
   - php7
+
+## "Yes" / "No"
+Yes -> you can re-asking questions.
+No -> go next, alexa hear you your impressions.
+
+## "I feel that ~."
+
