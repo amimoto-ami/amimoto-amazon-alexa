@@ -64,7 +64,7 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         'card': {
             'type': 'Simple',
             'title': 'SessionSpeechlet - ' + title,
-            'content': 'SessionSpeechlet - ' + remove_ssml_tags(output)
+            'content': 'SessionSpeechlet - ' + remove_ssml_tags(output.rstrip())
         },
         'reprompt': {
             'outputSpeech': {
