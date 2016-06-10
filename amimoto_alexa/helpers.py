@@ -112,9 +112,11 @@ def remove_ssml_tags(ssml):
     try:
         text = []
         root = ET.fromstring("<xml>" + ssml + "</xml>")
+
         for x in root.itertext():
-            text.append(x.strip()
-        retext = filter(lambda s:s != '', text)
+            text.append(x.strip())
+
+        retext = filter(lambda s: s != '', text)
         return " ".join(retext)
     except:
         return ssml
