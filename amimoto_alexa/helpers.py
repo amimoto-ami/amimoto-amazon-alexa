@@ -110,7 +110,10 @@ def put_event_to_firehorse(intent_request, session):
 
 def remove_ssml_tags(ssml):
     try:
-        root = ET.fromstring(ssml)
-        return root.text
+        text = []
+        root = ET.fromstring("<xml>" + ssml + "</xml>")
+        for x in root:
+            text.append(x.text)
+        return "".join(text)
     except:
         return ssml
