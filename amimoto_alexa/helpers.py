@@ -10,7 +10,7 @@ import datetime
 import time
 import boto3
 import lamvery
-import lxml.html
+import xml.etree.ElementTree as ET
 from debugger import *
 
 
@@ -110,7 +110,7 @@ def put_event_to_firehorse(intent_request, session):
 
 def remove_ssml_tags(ssml):
     try:
-        root = lxml.html.fromstring(ssml)
+        root = ET.fromstring(ssml)
         return root.text
     except:
         return ssml
