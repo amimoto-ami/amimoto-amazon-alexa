@@ -133,7 +133,7 @@ def get_welcome_response(intent, session):
 
 def handle_session_end_request(intent, session):
     card_title = "Session Ended"
-    speech_output = "<p>Thank you for trying the, A MI MO TO Ninja.</p>" \
+    speech_output = "<p>Thank you for trying the, <phoneme alphabet="ipa" ph="amimoʊtoʊ">AMIMOTO</phoneme> Ninja.</p>" \
                     "Have a nice day!"
     # Setting this to true ends the session and exits the skill.
     put_event_to_firehorse(intent, session)
