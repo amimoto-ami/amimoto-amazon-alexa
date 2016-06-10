@@ -10,6 +10,7 @@ import datetime
 import time
 import boto3
 import lamvery
+import lxml.html
 from debugger import *
 
 
@@ -63,7 +64,7 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         'card': {
             'type': 'Simple',
             'title': 'SessionSpeechlet - ' + title,
-            'content': 'SessionSpeechlet - ' + output
+            'content': 'SessionSpeechlet - ' + remove_ssml_tags(output)
         },
         'reprompt': {
             'outputSpeech': {
@@ -105,3 +106,11 @@ def put_event_to_firehorse(intent_request, session):
     except:
         print "Unexpected error: ", sys.exc_info()
     return True
+
+
+def remove_ssml_tags(ssml):
+    try:
+        root = lxml.html.fromstring(ssml)
+        return root.text
+    except:
+        return ssml
