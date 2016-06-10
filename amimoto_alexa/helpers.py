@@ -64,7 +64,7 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         'card': {
             'type': 'Simple',
             'title': 'SessionSpeechlet - ' + title,
-            'content': 'SessionSpeechlet - ' + remove_ssml_tags(output.rstrip())
+            'content': 'SessionSpeechlet - ' + remove_ssml_tags(output)
         },
         'reprompt': {
             'outputSpeech': {
@@ -112,8 +112,8 @@ def remove_ssml_tags(ssml):
     try:
         text = []
         root = ET.fromstring("<xml>" + ssml + "</xml>")
-        for x in root:
-            text.append(x.text)
+        for x in root.itertext():
+            text.append(x.rstrip('\n'))
         return "".join(text)
     except:
         return ssml
