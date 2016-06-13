@@ -2,7 +2,7 @@ AMIMOTO ALEXA Skills Kit
 ----
 
 [![CircleCI](https://circleci.com/gh/amimoto-ami/amimoto-amazon-alexa/tree/master.svg?style=svg)](https://circleci.com/gh/amimoto-ami/amimoto-amazon-alexa/tree/master)
-
+![MIT License](https://img.shields.io/github/license/amimoto-ami/amimoto-amazon-alexa.svg)
 ##About AMIMOTO Alexa
 
 Alexa is the voice recognition service provided by Amazon.
