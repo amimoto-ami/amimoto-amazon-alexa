@@ -89,6 +89,8 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# Direnv
+.envrc
 
 ## lamvery
 
