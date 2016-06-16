@@ -89,7 +89,7 @@ def on_intent(intent_request, session):
     elif intent_name == "AMAZON.NoIntent":
         return dispatch_no_intent(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
-        return get_welcome_response(intent, session)
+        return return_help_response(intent, session)
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return handle_session_end_request(intent, session)
     else:
@@ -126,6 +126,24 @@ def get_welcome_response(intent, session):
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = text_data['reprompt']
+    should_end_session = False
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+
+def return_help_response(intent, session):
+    """ AMIMOTO Help
+    """
+    debug_logger(intent, session)
+
+    session_attributes = build_session_attributes(session)
+
+    card_title = "Help"
+    text_data = load_text_from_yaml(card_title)
+    print(str(text_data))
+    speech_output = text_data['speech']
+    reprompt_text = text_data['speech']
+
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
