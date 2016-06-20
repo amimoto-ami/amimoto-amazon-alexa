@@ -2,8 +2,12 @@ MyNameIsIntent my name is {john smith|VisitorName}
 MyNameIsIntent i am {john smith|VisitorName}
 MyNameIsIntent i'm {john smith|VisitorName}
 WhatIsIntent what is {amimoto name|AskedQuestion}
+WhatIsIntent what's {amimoto name|AskedQuestion}
 WhatIsIntent what about {amimoto name|AskedQuestion}
+WhatIsIntent tell me about {amimoto name|AskedQuestion}
 CanIUseIntent can i use {free trial|AskedQuestion}
+CanIUseIntent do you have {free trial|AskedQuestion}
+CanIUseIntent how about {free trial|AskedQuestion}
 ImpressionIntent my impression is {your impressions|UserImpression}
 ImpressionIntent i feel {your impressions|UserImpression}
 ImpressionIntent i feel that {your impressions|UserImpression}
