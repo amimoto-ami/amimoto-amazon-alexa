@@ -132,11 +132,11 @@ def dispatch_no_intent(intent, session):
                         + "Have a nice day! "
         should_end_session = True
     elif session_attributes['state'] in ['finalizing']:
-        card_title = "AMIMOTO Ninja can't reconized..."
-        should_end_session = False
-        speech_output = '<p>One more time please.</p> <p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
-        return build_response(session_attributes, build_speechlet_response(
-            card_title, speech_output, speech_output, should_end_session))
+        card_title = "Thank you for trying AMIMOTO Ninja !!"
+        session_attributes['state'] = 'finalizing'
+        speech_output = '<p>Thank you for trying <phoneme alphabet="ipa" ph="amimoʊtoʊ">amimoto</phoneme> Ninja.</p>' \
+                        "Have a nice day! "
+        should_end_session = True
     else:
         card_title = "Thank you for trying AMIMOTO Ninja !!"
         session_attributes['state'] = 'finalizing'
