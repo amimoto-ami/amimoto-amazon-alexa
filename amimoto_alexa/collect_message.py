@@ -43,7 +43,7 @@ def collect_impression(intent, session):
     try:
         impression = intent['slots']['UserImpression']['value']
     except KeyError:
-        impression = "impression_missing"
+        impression = "Thank you! (Ninja failed convert to text.)"
 
     # check right user?
     debug_logger(session['user']['userId'])

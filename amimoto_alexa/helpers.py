@@ -69,7 +69,7 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         'reprompt': {
             'outputSpeech': {
                 'type': 'SSML',
-                'ssml': "<speak>>" + reprompt_text + "</speak>"
+                'ssml': "<speak>" + reprompt_text + "</speak>"
             }
         },
         'shouldEndSession': should_end_session
