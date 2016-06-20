@@ -14,8 +14,6 @@ def set_visitor_name_from_session(intent, session):
     user.
     """
 
-    card_title = 'Please tell me your name.'
-
     session_attributes = build_session_attributes(session)
     should_end_session = False
 
@@ -34,6 +32,8 @@ def set_visitor_name_from_session(intent, session):
     else:
         visitor_name = intent['slots']['VisitorName']['value'].lower()
         session_attributes['VisitorName'] = visitor_name
+
+    card_title = 'Hello ' + visitor_name + '! ' + "Let's ask to AMIMOTO Ninja !!"
 
     debug_logger(session_attributes)
     attendees = load_attendees()
