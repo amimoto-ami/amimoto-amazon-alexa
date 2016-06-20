@@ -14,7 +14,8 @@ def set_visitor_name_from_session(intent, session):
     user.
     """
 
-    card_title = 'Please tell me your name."
+    card_title = 'Please tell me your name.'
+
     session_attributes = build_session_attributes(session)
     should_end_session = False
 
