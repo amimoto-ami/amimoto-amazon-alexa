@@ -118,7 +118,7 @@ def get_welcome_response(intent, session):
     if session['new']:
         put_event_to_firehorse(intent, session)
 
-    card_title = "Welcome"
+    card_title = "Welcome to AMIMOTO Ninja !!"
     text_data = load_text_from_yaml(card_title)
     print(str(text_data))
     speech_output = text_data['speech']
@@ -138,7 +138,7 @@ def return_help_response(intent, session):
 
     session_attributes = build_session_attributes(session)
 
-    card_title = "Help"
+    card_title = "Usage of AMIMOTO Ninja"
     text_data = load_text_from_yaml(card_title)
     print(str(text_data))
     speech_output = text_data['speech']
@@ -150,7 +150,7 @@ def return_help_response(intent, session):
 
 
 def handle_session_end_request(intent, session):
-    card_title = "Session Ended"
+    card_title = "Thank you for trying AMIMOTO Ninja !!"
     speech_output = '<p>Thank you for trying the, <phoneme alphabet="ipa" ph="amimoʊtoʊ">AMIMOTO</phoneme> Ninja.</p>' \
                     "Have a nice day!"
     # Setting this to true ends the session and exits the skill.

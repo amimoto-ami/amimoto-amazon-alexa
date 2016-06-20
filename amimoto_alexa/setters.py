@@ -14,13 +14,13 @@ def set_visitor_name_from_session(intent, session):
     user.
     """
 
-    card_title = 'MyNameIs'
+    card_title = 'Please tell me your name."
     session_attributes = build_session_attributes(session)
     should_end_session = False
 
     if session_attributes['state'] in ['finalizing']:
         speech_output = '<p>One more time please.</p><p>Please tell us your thoughts by saying, <break time="0.3s"/> I feel "I love WordPress!"</p>'
-        card_title = "Null"
+        card_title = "AMIMOTO Ninja unreconized...."
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
 

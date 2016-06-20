@@ -18,19 +18,19 @@ def collect_impression(intent, session):
     """Collect impression and finalize session
     """
     session_attributes = build_session_attributes(session)
-    card_title = "Impression"
+    card_title = "Thank you for trying AMIMOTO Ninja !!"
 
     debug_logger(session)
 
     if session_attributes['state'] in ['started']:
         speech_output = '<p>Please tell me your name first, by saying, <break time="0.2s"/> i am John Smith</p>'
-        card_title = "Null"
+        card_title = "Please tell me your name first."
         should_end_session = False
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
     elif session_attributes['state'] in ['on_question', 'got_name']:
         speech_output = '<p>Please ask to me by saying, <break time="0.2s"/> What is WordPress?, or Can I use free trial?</p>'
-        card_title = "Null"
+        card_title = "Usage of AMIMOTO Ninja."
         should_end_session = False
         return build_response(session_attributes, build_speechlet_response(
             card_title, speech_output, speech_output, should_end_session))
