@@ -119,7 +119,7 @@ def get_welcome_response(intent, session):
         put_event_to_firehorse(intent, session)
 
     card_title = "Welcome to AMIMOTO Ninja !!"
-    text_data = load_text_from_yaml(card_title)
+    text_data = load_text_from_yaml('Welcome')
     print(str(text_data))
     speech_output = text_data['speech']
 
@@ -139,7 +139,7 @@ def return_help_response(intent, session):
     session_attributes = build_session_attributes(session)
 
     card_title = "Usage of AMIMOTO Ninja"
-    text_data = load_text_from_yaml(card_title)
+    text_data = load_text_from_yaml('Help')
     print(str(text_data))
     speech_output = text_data['speech']
     reprompt_text = text_data['speech']

@@ -33,15 +33,15 @@ def dispatch_question(intent, session):
     session_attributes['state'] = 'on_question'
 
     if intent['name'] == 'WhatIsIntent':
-        card_title = "WhatIs"
+        text_title = "WhatIs"
         pre_text = "What is "
     elif intent['name'] == 'CanIUseIntent':
-        card_title = "CanIUse"
+        text_title = "CanIUse"
         pre_text = "Can I use "
     else:
-        card_title = "Null"
+        text_title = "Null"
 
-    text_data = load_text_from_yaml(card_title)
+    text_data = load_text_from_yaml(text_title)
     aliases = yaml.load(open('data/aliases.yml').read())
     rev_aliases = {}
     for x in aliases.items():
